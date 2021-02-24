@@ -3,9 +3,13 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.swing.border.*;
 import java.awt.event.*;
+import java.sql.*;
+
 
 public class Login extends JFrame implements ActionListener{
     JButton b1, b2, b3;
+    JTextField t1;
+    JPasswordField t2;
 	Login(){
      // setSize(400,400);
      // setLocation(400,200);
@@ -19,10 +23,10 @@ public class Login extends JFrame implements ActionListener{
       p1.setLayout(null);
       add(p1);
    
-      Image i1 = new ImageIcon(this.getClass().getResource("/login3.png")).getImage();
+      Image i1 = new ImageIcon(this.getClass().getResource("/login1.png")).getImage();
       //ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("/login1.png"));
      // Image i2 = i1.SCALE_DEFAULT();
-      Image i2 = i1.getScaledInstance(320,300, 600);
+      Image i2 = i1.getScaledInstance(320,300, Image.SCALE_DEFAULT);
       ImageIcon i3 = new ImageIcon(i2);
       JLabel l1 = new JLabel(i3);
       //JLabel l1 = new JLabel();
@@ -39,9 +43,10 @@ public class Login extends JFrame implements ActionListener{
       l2.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
       p2.add(l2);
 
-      JTextField t1 = new JTextField();
+      t1 = new JTextField();
       t1.setBounds(60, 60, 300, 30);
       t1.setBorder(BorderFactory.createEmptyBorder());
+      t1.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
       p2.add(t1);
 
       JLabel l3 = new JLabel("Password");
@@ -49,9 +54,10 @@ public class Login extends JFrame implements ActionListener{
       l3.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
       p2.add(l3);
 
-      JPasswordField t2 = new JPasswordField ();
+      t2 = new JPasswordField ();
       t2.setBounds(60, 150, 300, 30);
       t2.setBorder(BorderFactory.createEmptyBorder());
+      t2.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
       p2.add(t2);
 
       b1 = new JButton("Login");
@@ -92,14 +98,34 @@ public class Login extends JFrame implements ActionListener{
    
    public void actionPerformed(ActionEvent ae) {
 	    if(ae.getSource() == b1) {
+	    	Conn c = new Conn();
 	    	
+	    	try {
+	    		String username = t1.getText();
+		    	String password= t2.getText();
+		    	String sql = "select * from account where username = '"+username+"' AND password = '"+password+"'";
+                ResultSet rs = c.s.executeQuery(sql);	
+                
+                if(rs.next()) {
+                	this.setVisible(false);
+                	new Loading(username).setVisible(true);
+                }else {
+         		   t1.setText("");
+        		   t2.setText("");
+                   JOptionPane.showMessageDialog(null, "Invalid Login!");	
+                }
+	    	}
+	    	catch(Exception e){
+	    		
+	    	}
 	    }
 	    else if(ae.getSource() == b2) {
-	    	new Signup().setVisible(true);
 	    	this.setVisible(false);
+	    	new Signup().setVisible(true);
 	    }
 	    else if(ae.getSource() == b3) {
-	    	
+	    	this.setVisible(false);
+	    	new ForgotPassword().setVisible(true);
 	    }
 	   
    }
