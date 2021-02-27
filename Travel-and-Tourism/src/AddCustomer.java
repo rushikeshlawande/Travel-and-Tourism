@@ -159,9 +159,13 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 			   ResultSet rs = c.s.executeQuery(sql);
 			   while(rs.next()) {
 				   t1.setText(rs.getString("username"));
+				   t1.setEditable(false);
 				   t3.setText(rs.getString("name"));
+				   t3.setEditable(false);
 				   t6.setText(rs.getString("mobileNo"));
+				   t6.setEditable(false);
 				   t7.setText(rs.getString("emailID"));
+				   t7.setEditable(false);
 
 			   }
 		   }

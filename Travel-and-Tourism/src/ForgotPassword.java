@@ -115,6 +115,7 @@ public class ForgotPassword extends JFrame implements ActionListener{
 		   t2.setText("");
 		   t3.setText("");
 		   t4.setText("");
+		   t5.setEditable(true);
 		   t5.setText("");
 		   try {
 			   String sql = "select * from account where "
@@ -122,13 +123,18 @@ public class ForgotPassword extends JFrame implements ActionListener{
 			   ResultSet rs = c.s.executeQuery(sql);
 			   while(rs.next()) {
 				   t2.setText(rs.getString("name"));
+				   t2.setEditable(false);
 				   t3.setText(rs.getString("security"));
+				   t3.setEditable(false);
 			   }
 		   }
 		   catch(Exception e) {}
            if(t2.getText().length()==0)
            {
     		   t1.setText("");
+			   t2.setEditable(true);
+			   t3.setEditable(true);
+			   //t5.setEditable(true);
         	   JOptionPane.showMessageDialog(null, "Username Not Found!","Error",JOptionPane.ERROR_MESSAGE);
            }
 
@@ -141,6 +147,7 @@ public class ForgotPassword extends JFrame implements ActionListener{
 				   ResultSet rs = c.s.executeQuery(sql);
 				   while(rs.next()) {
 					   t5.setText(rs.getString("password"));
+					   t5.setEditable(false);
 				   }
 			   }
 			   catch(Exception e) {}
@@ -148,6 +155,7 @@ public class ForgotPassword extends JFrame implements ActionListener{
 	    	if(t5.getText().length()==0)
 	           {
 	 		       t4.setText("");
+				   t5.setEditable(true);
 	        	   JOptionPane.showMessageDialog(null, "Security Answer Incorrect!","Error",JOptionPane.ERROR_MESSAGE);
 	           }
 	    	
