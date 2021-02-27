@@ -16,7 +16,7 @@ public class Loading extends JFrame implements Runnable{
 			    else {
 			    	i=101;
 			    	setVisible(false);
-			    	new Dashboard().setVisible(true);
+			    	new Dashboard(username).setVisible(true);
 			    }
 			    Thread.sleep(15);
 			}
@@ -26,7 +26,7 @@ public class Loading extends JFrame implements Runnable{
 	}
 	
 	Loading(String username){
-		this.username = "Tushar";
+		this.username = username;
 		t = new Thread(this);
 		
 		
@@ -67,7 +67,7 @@ public class Loading extends JFrame implements Runnable{
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        new Loading("Tushar").setVisible(true);
+        new Loading("").setVisible(true);
 	}
 
 }

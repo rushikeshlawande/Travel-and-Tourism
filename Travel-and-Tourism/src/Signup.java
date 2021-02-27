@@ -159,6 +159,9 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
 	    	}
 	    	catch (Exception e) {
 				System.out.println("connecton unsuccessfull");
+				e.printStackTrace();
+		     	JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
+
 
 	    	}
 	    }

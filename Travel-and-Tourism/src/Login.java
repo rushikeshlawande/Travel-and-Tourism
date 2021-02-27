@@ -111,12 +111,14 @@ public class Login extends JFrame implements ActionListener{
                 	new Loading(username).setVisible(true);
                 }else {
          		   t1.setText("");
-        		   t2.setText("");
-                   JOptionPane.showMessageDialog(null, "Invalid Login!");	
+        		   t2.setText("");	
+            	   JOptionPane.showMessageDialog(null, "Invalid Username or Password","Invalid Login!",JOptionPane.ERROR_MESSAGE);
+
                 }
 	    	}
 	    	catch(Exception e){
-	    		
+				   e.printStackTrace();
+		     	   JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
 	    	}
 	    }
 	    else if(ae.getSource() == b2) {

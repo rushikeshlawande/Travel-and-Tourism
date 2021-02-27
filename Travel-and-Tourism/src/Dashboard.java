@@ -4,10 +4,10 @@ import javax.swing.*;
 
 public class Dashboard extends JFrame implements ActionListener{
 
-	JButton b13, b14;
-	
-	Dashboard(){
-	
+	JButton b1,b13, b14;
+	String username;
+	Dashboard(String username){
+	     this.username = username;
 		//setSize(1950,100);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);  // gives fullscreen frame
 		setLayout(null);
@@ -37,12 +37,13 @@ public class Dashboard extends JFrame implements ActionListener{
 		p2.setBackground(new Color( 0, 0, 102));
 		add(p2);
 		
-		JButton b1 = new JButton("Add Personal Details");
+	    b1 = new JButton("Add Personal Details");
 		b1.setBackground(new Color(0, 0, 102));
 		b1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		b1.setForeground(Color.WHITE);
 		b1.setMargin(new Insets(0, 0, 0, 60));
 		b1.setBounds(0, 0, 300, 40);
+		b1.addActionListener(this);
 		p2.add(b1);
 	    
 		JButton b2 = new JButton("Update Personal Details");
@@ -181,7 +182,9 @@ public class Dashboard extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent ae)
     {
-    	if (ae.getSource() == b13) {
+    	if (ae.getSource() == b1) {
+    		new AddCustomer(username).setVisible(true);
+    	}else if (ae.getSource() == b13) {
     		try {
     			Runtime.getRuntime().exec("calc.exe");
     			
@@ -195,7 +198,7 @@ public class Dashboard extends JFrame implements ActionListener{
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new Dashboard().setVisible(true);
+		new Dashboard("").setVisible(true);
 
 	}
 
