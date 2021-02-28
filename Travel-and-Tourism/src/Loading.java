@@ -31,7 +31,7 @@ public class Loading extends JFrame implements Runnable{
 		
 		
 		
-		setBounds(700, 250, 650, 400);
+		setBounds(450, 200, 650, 400);
 		getContentPane().setBackground(Color.white);
 		setLayout(null);
 		
@@ -67,7 +67,7 @@ public class Loading extends JFrame implements Runnable{
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        new Loading("").setVisible(true);
+        new Loading(" ").setVisible(true);
 	}
 
 }

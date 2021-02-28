@@ -16,10 +16,17 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 	
 	AddCustomer(String username){
 		this.username = username;
-		setTitle("Add Customer Details");
-		setBounds(300, 200, 680, 550);
+		setTitle("Add Customer ");
+		setBounds(550, 200, 680, 550);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
+		
+		JLabel l11 = new JLabel("Add Customer Details");
+		l11.setBackground(Color.BLACK);
+		l11.setForeground(Color.black);
+		l11.setFont(new Font("Arial", Font.BOLD,30));
+		l11.setBounds(40,5, 400, 30);
+		add(l11);
 		
 		JLabel l1 = new JLabel("Username :");
 		l1.setBounds(30, 50, 150,25);
@@ -169,10 +176,11 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 
 			   }
 		   }
-		   catch(Exception e) {}
+		   catch(Exception e) {
+			   e.printStackTrace();
+	     	   JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
+		   }
         
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 	}
 	
 	public void itemStateChanged(ItemEvent ie)
@@ -211,8 +219,6 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 			this.setVisible(false);
 		}
 		
-	    //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 	}
 	
 	public static void main(String[] args) {
