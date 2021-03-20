@@ -82,7 +82,7 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
       p1.add(t5);
       
 
-      JLabel l6 = new JLabel("Mobile Number");
+      JLabel l6 = new JLabel("Phone/Mobile");
       l6.setFont(new Font("Tahoma", Font.BOLD, 14));
       l6.setBounds(50, 220, 130, 25);
       p1.add(l6);

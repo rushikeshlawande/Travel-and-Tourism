@@ -21,6 +21,13 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 		
+		Image i1 = new ImageIcon(this.getClass().getResource("/4.jpg")).getImage();
+	    Image i2 = i1.getScaledInstance(200,400, Image.SCALE_DEFAULT);
+	    ImageIcon i3 = new ImageIcon(i2);
+	    JLabel l10 = new JLabel(i3);
+	    l10.setBounds(400, 0, 250,500);
+	    add(l10);
+		
 		JLabel l11 = new JLabel("Add Customer Details");
 		l11.setBackground(Color.BLACK);
 		l11.setForeground(Color.black);
@@ -151,14 +158,6 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
         b2.addActionListener(this);
         add(b2);
         
-        
-
-		Image i1 = new ImageIcon(this.getClass().getResource("/addcustomer.png")).getImage();
-	    Image i2 = i1.getScaledInstance(350,700, Image.SCALE_DEFAULT);
-	    ImageIcon i3 = new ImageIcon(i2);
-	    JLabel l10 = new JLabel(i3);
-	    l10.setBounds(390, 5, 250, 600);
-	    add(l10);
 	    
 	    try {
 	    	   Conn c = new Conn();

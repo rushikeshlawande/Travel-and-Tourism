@@ -11,16 +11,23 @@ public class ViewCustomer extends JFrame implements ActionListener{
 	ViewCustomer(String username){
 		this.username = username;
 		setTitle("View Customer");
-		setBounds(450, 150, 900, 580);
+		setBounds(450, 150, 900, 600);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 		
-		Image i1 = new ImageIcon(this.getClass().getResource("/dashboard1.png")).getImage();
-	    Image i2 = i1.getScaledInstance(900,200, Image.SCALE_DEFAULT);
+		Image i1 = new ImageIcon(this.getClass().getResource("/9.jpg")).getImage();
+	    Image i2 = i1.getScaledInstance(450,260, Image.SCALE_DEFAULT);
 	    ImageIcon i3 = new ImageIcon(i2);
 	    JLabel l10 = new JLabel(i3);
-	    l10.setBounds(0, 350, 900, 200);
+	    l10.setBounds(0, 340, 450, 280);
 	    add(l10);
+	    
+	    Image i4 = new ImageIcon(this.getClass().getResource("/12.jpg")).getImage();
+	    Image i5 = i4.getScaledInstance(450,240, Image.SCALE_DEFAULT);
+	    ImageIcon i6 = new ImageIcon(i5);
+	    JLabel l20 = new JLabel(i6);
+	    l20.setBounds(452, 353, 450, 245);
+	    add(l20);
 		
 		
 		JLabel l1 = new JLabel("Username :");
