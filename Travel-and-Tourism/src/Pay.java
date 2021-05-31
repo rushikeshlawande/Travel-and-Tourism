@@ -22,7 +22,7 @@ public class Pay extends JFrame implements ActionListener{
 		b1.addActionListener(this);
 	    jep.add(b1);
 		
-		setBounds(370,50,1100,750);
+		setBounds(250, 50,1100,750);
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	

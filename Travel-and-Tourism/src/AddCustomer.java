@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Dialog.ModalityType;
 import java.awt.event.*;
 import java.sql.*;
 
@@ -18,7 +17,7 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 	AddCustomer(String username){
 		this.username = username;
 		setTitle("Add Customer ");
-		setBounds(550, 200, 800, 550);
+		setBounds(550, 200, 900, 550);		
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 	    setResizable(false);
@@ -28,7 +27,7 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 	    Image i2 = i1.getScaledInstance(370,420, Image.SCALE_DEFAULT);
 	    ImageIcon i3 = new ImageIcon(i2);
 	    JLabel l10 = new JLabel(i3);
-	    l10.setBounds(400, 30, 370,420);
+	    l10.setBounds(470, 30, 370,420);
 	    add(l10);
 		
 		JLabel l11 = new JLabel("Add Customer Details");
@@ -64,7 +63,7 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 		add(l3);
 		
 		t2 = new JTextField();
-		t2.setBounds(220, 130, 150, 25);
+		t2.setBounds(220, 130, 220, 25);
 	    t2.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         add(t2);
         
@@ -74,7 +73,7 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 		add(l4);
 		
 		t3 = new JTextField();
-		t3.setBounds(220, 170, 150, 25);
+		t3.setBounds(220, 170, 220, 25);
 	    t3.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         add(t3);
         
@@ -120,7 +119,7 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 		add(l7);
 		
 		t5 = new JTextField();
-		t5.setBounds(220, 290, 150, 25);
+		t5.setBounds(220, 290, 220, 25);
 	    t5.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         add(t5);
     
@@ -141,7 +140,7 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 		add(l9);
 		
 		t7 = new JTextField();
-		t7.setBounds(220, 370, 150, 25);
+		t7.setBounds(220, 370, 220, 25);
 	    t7.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         add(t7);
 		
@@ -149,14 +148,14 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
         b1.setBackground(Color.BLACK);
         b1.setForeground(Color.WHITE);
 	    b1.setFont(new Font("SAN_SERIF", Font.PLAIN, 18));
-        b1.setBounds(100, 425, 70, 30);
+        b1.setBounds(120, 425, 70, 30);
         b1.addActionListener(this);
         add(b1);
         
         b2 = new JButton("Back");
         b2.setBackground(Color.BLACK);
         b2.setForeground(Color.WHITE);
-        b2.setBounds(250, 425, 80, 30);
+        b2.setBounds(270, 425, 80, 30);
         b2.setFont(new Font("SAN_SERIF", Font.PLAIN, 18));
         b2.addActionListener(this);
         add(b2);
@@ -209,7 +208,6 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 				 Conn c = new Conn();
 				 c.s.executeUpdate(query);
 				 JOptionPane.showMessageDialog(null,"Customer Details Added Successfully");
-				 //this.setVisible(false);
 				 this.dispose();
 
 			}catch(SQLIntegrityConstraintViolationException e) {		     	
@@ -218,7 +216,6 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 	     	   JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
 			}
 		} else if(ae.getSource() == b2) {
-			//this.setVisible(false);
 			this.dispose();
 		}
 	

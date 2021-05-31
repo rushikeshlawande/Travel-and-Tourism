@@ -11,7 +11,7 @@ public class ViewCustomer extends JFrame implements ActionListener{
 	ViewCustomer(String username){
 		this.username = username;
 		setTitle("View Customer");
-		setBounds(450, 150, 900, 600);
+		setBounds(550, 200, 930, 600);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 	    setResizable(false);
@@ -38,7 +38,7 @@ public class ViewCustomer extends JFrame implements ActionListener{
 		add(l1);
 		
 		JLabel l11 = new JLabel();
-		l11.setBounds(220, 40, 150,25);
+		l11.setBounds(200, 40, 200,25);
 	    l11.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l11);
         
@@ -48,7 +48,7 @@ public class ViewCustomer extends JFrame implements ActionListener{
 		add(l2);
 		
 		JLabel l12 = new JLabel();
-		l12.setBounds(220, 95, 150,25);
+		l12.setBounds(200, 95, 200,25);
 	    l12.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l12);
 
@@ -58,7 +58,7 @@ public class ViewCustomer extends JFrame implements ActionListener{
 		add(l3);
 		
 		JLabel l13 = new JLabel();
-		l13.setBounds(220, 150, 150,25);
+		l13.setBounds(200, 150, 200,25);
 	    l13.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l13);
 		
@@ -68,7 +68,7 @@ public class ViewCustomer extends JFrame implements ActionListener{
 		add(l4);
 		
 		JLabel l14 = new JLabel();
-		l14.setBounds(220, 205, 150,25);
+		l14.setBounds(200, 205, 250,25);
 	    l14.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l14);
         
@@ -78,47 +78,47 @@ public class ViewCustomer extends JFrame implements ActionListener{
 		add(l5);
 	
 		JLabel l15 = new JLabel();
-		l15.setBounds(220, 260, 150,25);
+		l15.setBounds(200, 260, 200,25);
 	    l15.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l15);
 
         JLabel l6 = new JLabel("Country");
-		l6.setBounds(500, 40, 150,25);
+		l6.setBounds(460, 40, 150,25);
 	    l6.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l6);
 		
 		JLabel l16 = new JLabel();
-		l16.setBounds(690, 40, 150,25);
+		l16.setBounds(630, 40, 200,25);
 	    l16.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l16);
         
         JLabel l7 = new JLabel("Address :");
-		l7.setBounds(500, 95, 150,25);
+		l7.setBounds(460, 95, 150,25);
 	    l7.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l7);
 		
 		JLabel l17 = new JLabel();
-		l17.setBounds(690, 95, 150,25);
+		l17.setBounds(630, 95, 250,25);
 	    l17.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l17);
     
         JLabel l8 = new JLabel("Phone/ Mobile :");
-		l8.setBounds(500, 150, 150,25);
+		l8.setBounds(460, 150, 150,25);
 	    l8.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l8);
 		
 		JLabel l18 = new JLabel();
-		l18.setBounds(690, 150, 150,25);
+		l18.setBounds(630, 150, 200,25);
 	    l18.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l18);
 		
         JLabel l9 = new JLabel("E-Mail :");
-		l9.setBounds(500, 205, 150,25);
+		l9.setBounds(460, 205, 150,25);
 	    l9.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l9);
 		
 		JLabel l19 = new JLabel();
-		l19.setBounds(690, 205, 150,25);
+		l19.setBounds(630, 205, 200,25);
 	    l19.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
 		add(l19);
 		
@@ -165,7 +165,7 @@ public class ViewCustomer extends JFrame implements ActionListener{
 	}
 	
 	public static void main(String[] args) {
-          new ViewCustomer("").setVisible(true);
+          new ViewCustomer("kunal").setVisible(true);
 	}
 
 }

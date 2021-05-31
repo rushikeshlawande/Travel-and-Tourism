@@ -17,17 +17,17 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 	UpdateCustomer(String username){
 		this.username = username;
 		setTitle("Update Customer ");
-		setBounds(500, 200, 750, 550);
+		setBounds(450, 200, 970, 500);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 	    this.setResizable(false);
 	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		Image i1 = new ImageIcon(this.getClass().getResource("updatecustomer.jpg")).getImage();
-	    Image i2 = i1.getScaledInstance(800,1100, Image.SCALE_DEFAULT);
+	    Image i2 = i1.getScaledInstance(450,400, Image.SCALE_DEFAULT);
 	    ImageIcon i3 = new ImageIcon(i2);
 	    JLabel l10 = new JLabel(i3);
-	    l10.setBounds(390, 45, 800, 1100);
+	    l10.setBounds(490, 45, 450, 400);
 	    add(l10);
 		
 		JLabel l11 = new JLabel("Update Customer Details");
@@ -43,7 +43,7 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 		add(l1);
 		
 		t1 = new JTextField(username);
-		t1.setBounds(220, 50, 150, 25);
+		t1.setBounds(220, 50, 250, 25);
 	    t1.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         add(t1);
         
@@ -63,7 +63,7 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 		add(l3);
 		
 		t2 = new JTextField();
-		t2.setBounds(220, 130, 150, 25);
+		t2.setBounds(220, 130, 250, 25);
 	    t2.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         add(t2);
         
@@ -73,7 +73,7 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 		add(l4);
 		
 		t3 = new JTextField();
-		t3.setBounds(220, 170, 150, 25);
+		t3.setBounds(220, 170, 250, 25);
 	    t3.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         add(t3);
         
@@ -106,7 +106,7 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 		add(l6);
 		
 		t4 = new JTextField();
-		t4.setBounds(220, 250, 150, 25);
+		t4.setBounds(220, 250, 200, 25);
 	    t4.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         add(t4);
         
@@ -117,7 +117,7 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 		add(l7);
 		
 		t5 = new JTextField();
-		t5.setBounds(220, 290, 150, 25);
+		t5.setBounds(220, 290, 250, 25);
 	    t5.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         add(t5);
     
@@ -128,7 +128,7 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 		add(l8);
 		
 		t6 = new JTextField();
-		t6.setBounds(220, 330, 150, 25);
+		t6.setBounds(220, 330, 200, 25);
 	    t6.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         add(t6);
         
@@ -138,7 +138,7 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 		add(l9);
 		
 		t7 = new JTextField();
-		t7.setBounds(220, 370, 150, 25);
+		t7.setBounds(220, 370, 200, 25);
 	    t7.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
         add(t7);
 		
@@ -223,11 +223,22 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 			String email = t7.getText();
 			
 			String query = "update customer set username ='"+username1+"', id='"+id+"', idnumber='"+idnumber+"', name='"+name+"', gender='"+gender+"', country='"+country+"', address='"+address+"', mobileNo='"+phone+"', emailID='"+email+"' where username = '"+username+"'";
+			/* code to update the customer database*/
 			try {
 				 Conn c = new Conn();
 				 c.s.executeUpdate(query);
 				 JOptionPane.showMessageDialog(null,"Customer Details Updated Successfully");
-				  this.dispose();
+			}catch(Exception e) {
+	     	   JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
+			}
+			 
+			/* code to update the account/bookpackage/bookhotel database*/
+			try {
+				 Conn c = new Conn();
+				 c.s.executeUpdate("update account set username ='"+username1+"', name='"+name+"', mobileNo='"+phone+"', emailID='"+email+"' where username = '"+username+"'");
+				 c.s.executeUpdate("update bookpackage set username ='"+username1+"' where username = '"+username+"'");
+				 c.s.executeUpdate("update bookhotel set username ='"+username1+"' where username = '"+username+"'");
+				 this.dispose();
 			}catch(Exception e) {
 	     	   JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
 			}

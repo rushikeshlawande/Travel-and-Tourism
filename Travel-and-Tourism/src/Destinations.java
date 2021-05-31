@@ -25,7 +25,7 @@ public class Destinations extends JFrame implements Runnable {
     }
    
     Destinations(){
-		setBounds(250,60,1200,700);
+		setBounds(300,90,1200,700);
 	    setResizable(false);
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		

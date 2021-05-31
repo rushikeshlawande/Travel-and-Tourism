@@ -6,8 +6,10 @@ import java.awt.event.*;
 public class ViewBookedHotel extends JFrame implements ActionListener{
 
 	JButton b1;
+	String username;
 	public ViewBookedHotel(String username) {
-		setBounds(350,180,1100,550);
+		this.username = username;
+		setBounds(420, 200,1100,550);
 		getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 	    setResizable(false);
@@ -30,7 +32,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 		add(l1);
 		
 		JLabel l11=new JLabel();
-		l11.setBounds(250,50,200,30);
+		l11.setBounds(200,50,250,30);
 		add(l11);
 		
 		JLabel l2=new JLabel("Hotel Name: ");
@@ -38,7 +40,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 		add(l2);
 		
 		JLabel l12=new JLabel();
-		l12.setBounds(250,90,200,30);
+		l12.setBounds(200,90,250,30);
 		add(l12);
 		
 		JLabel l3=new JLabel("Total Person: ");
@@ -46,7 +48,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 		add(l3);
 		
 		JLabel l13=new JLabel();
-		l13.setBounds(250,130,200,30);
+		l13.setBounds(200,130,250,30);
 		add(l13);
 		
 		JLabel l4=new JLabel("Total Days: ");
@@ -54,7 +56,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 		add(l4);
 		
 		JLabel l14=new JLabel();
-		l14.setBounds(250,170,200,30);
+		l14.setBounds(200,170,250,30);
 		add(l14);
 		
 		JLabel l5=new JLabel("Ac Included?: ");
@@ -62,7 +64,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 		add(l5);
 		
 		JLabel l15=new JLabel();
-		l15.setBounds(250,210,200,30);
+		l15.setBounds(200,210,250,30);
 		add(l15);
 		
 		JLabel l6=new JLabel("Food Included?: ");
@@ -70,7 +72,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 		add(l6);
 		
 		JLabel l16=new JLabel();
-		l16.setBounds(250,250,200,30);
+		l16.setBounds(200,250,250,30);
 		add(l16);
 		
 		JLabel l7=new JLabel("ID: ");
@@ -78,7 +80,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 		add(l7);
 		
 		JLabel l17=new JLabel();
-		l17.setBounds(250,290,200,30);
+		l17.setBounds(200,290,250,30);
 		add(l17);
 		
 		JLabel l8=new JLabel("Number: ");
@@ -86,7 +88,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 		add(l8);
 		
 		JLabel l18=new JLabel();
-		l18.setBounds(250,330,200,30);
+		l18.setBounds(200,330,250,30);
 		add(l18);
 		
 		JLabel l9=new JLabel("Phone: ");
@@ -94,7 +96,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 		add(l9);
 		
 		JLabel l19=new JLabel();
-		l19.setBounds(250,370,200,30);
+		l19.setBounds(200,370,250,30);
 		add(l19);
 		
 		JLabel l10=new JLabel("Total cost: ");
@@ -102,7 +104,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 		add(l10);
 		
 		JLabel l20=new JLabel();
-		l20.setBounds(250,410,200,30);
+		l20.setBounds(200,410,250,30);
 		add(l20);
                 
         b1=new JButton("Back");
@@ -116,7 +118,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 			Conn c=new Conn();
 			ResultSet rs =c.s.executeQuery("select * from bookHotel where username = '"+username+"'");
 			if(rs.next() == false) {
-				 JOptionPane.showMessageDialog(null,"No Package Booked ","Please Book a Package",JOptionPane.ERROR_MESSAGE);
+				 JOptionPane.showMessageDialog(null,"No Hotel Booked ","Please Book a Package",JOptionPane.ERROR_MESSAGE);
 				 
 	       }else {
 		      do {

@@ -51,7 +51,7 @@ public class ForgotPassword extends JFrame implements ActionListener{
      p.add(l2);
 
      t2 = new JTextField();
-     t2.setBounds(220,60,150,25);
+     t2.setBounds(220,60,250,25);
      t2.setBorder(BorderFactory.createEmptyBorder());
      t2.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
      p.add(t2);
@@ -161,7 +161,7 @@ public class ForgotPassword extends JFrame implements ActionListener{
 	    		    }
 	    else if(ae.getSource() == b3) {
 			this.dispose();
-	    	new Login().setVisible(true);
+	    	new Login("","").setVisible(true);
 	    	
 	    }
 	   

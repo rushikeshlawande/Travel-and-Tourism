@@ -18,7 +18,7 @@ public class BookPackage extends JFrame implements ActionListener {
 		
 		this.username = username;
 		
-		setBounds(450, 150, 900, 480);
+		setBounds(480, 200, 950, 480);
 		setLayout(null);
 		getContentPane().setBackground(Color.WHITE);
 	    setResizable(false);
@@ -28,7 +28,7 @@ public class BookPackage extends JFrame implements ActionListener {
 	    Image i2 = i1.getScaledInstance(400,490, Image.SCALE_DEFAULT);
 	    ImageIcon i3 = new ImageIcon(i2);
 	    l16 = new JLabel(i3);
-	    l16.setBounds(400, 0, 530, 470);
+	    l16.setBounds(450, 0, 530, 470);
 	    add(l16);
 	    
 		JLabel l1 = new JLabel("BOOK PACKAGE");
@@ -42,7 +42,7 @@ public class BookPackage extends JFrame implements ActionListener {
 		add(l2);
 		
 	    l11 = new JLabel();
-		l11.setBounds(250, 70, 100, 30);
+		l11.setBounds(250, 70, 150, 30);
 		l11.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		add(l11);
 		
@@ -135,21 +135,21 @@ public class BookPackage extends JFrame implements ActionListener {
 		b1 = new JButton("Check Price");
 		b1.setBackground(Color.BLACK);
 		b1.setForeground(Color.WHITE);
-		b1.setBounds(60, 380, 120,25);
+		b1.setBounds(60, 380, 108,25);
 		b1.addActionListener(this);
 		add(b1);
 		
 		b2 = new JButton("Book Package");
 		b2.setBackground(Color.BLACK);
 		b2.setForeground(Color.WHITE);
-		b2.setBounds(200, 380, 120,25);
+		b2.setBounds(200, 380, 115,25);
 		b2.addActionListener(this);
 		add(b2);
 		
 		b3 = new JButton("Back");
 		b3.setBackground(Color.BLACK);
 		b3.setForeground(Color.WHITE);
-		b3.setBounds(340, 380, 120,25);
+		b3.setBounds(340, 380, 100,25);
 		b3.addActionListener(this);
 		add(b3);
 	}
@@ -186,6 +186,10 @@ public class BookPackage extends JFrame implements ActionListener {
 				label.setText("Enter the valid number 1-20");
 			}
 		}else if(ae.getSource() == b2) {
+			try {
+				Conn c = new Conn();
+				c.s.executeUpdate("delete from bookpackage where username ='"+username+"'");
+			}catch(Exception e) {}
 			if(price > 0)
 			{
 				try {

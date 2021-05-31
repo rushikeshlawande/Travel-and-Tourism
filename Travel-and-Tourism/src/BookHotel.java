@@ -14,7 +14,7 @@ public class BookHotel extends JFrame implements ActionListener{
     
 	BookHotel(String username){
 		this.username = username;
-		setBounds(400,200,1100,600);
+		setBounds(420, 200,1100,600);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 	    setResizable(false);
@@ -30,7 +30,7 @@ public class BookHotel extends JFrame implements ActionListener{
 		add(l2);
 		
 	    l21=new JLabel();
-		l21.setBounds(250,70,150,30);
+		l21.setBounds(200,70,200,30);
 		add(l21);
 		
 		JLabel l3=new JLabel("Select Hotel: ");
@@ -45,7 +45,7 @@ public class BookHotel extends JFrame implements ActionListener{
 				c1.add(rs.getString("name"));
 			}
 		}catch(Exception e) {}
-		c1.setBounds(250,110,150,30);
+		c1.setBounds(200,110,200,30);
 		add(c1);
 		
 		JLabel l4=new JLabel("Total Persons: ");
@@ -53,13 +53,13 @@ public class BookHotel extends JFrame implements ActionListener{
 		add(l4);
 		
 		t1=new JTextField();
-		t1.setBounds(250,150,150,25);
+		t1.setBounds(200,150,200,25);
 		add(t1);
 		
 		l31=new JLabel("Maximum limit 5 Persons");
 		l31.setFont(new Font("SAN_SERIF", Font.PLAIN, 10));
 	    l31.setForeground(Color.RED);
-		l31.setBounds(250,170,150,20);
+		l31.setBounds(200,170,200,20);
 		add(l31);
 		
 		JLabel l5=new JLabel("No. of Days: ");
@@ -67,13 +67,13 @@ public class BookHotel extends JFrame implements ActionListener{
 		add(l5);
 		
 		t2=new JTextField();
-		t2.setBounds(250,190,150,25);
+		t2.setBounds(200,190,200,25);
 		add(t2);
 		
 		l32=new JLabel("Maximun Limit 10 Days");
 		l32.setFont(new Font("SAN_SERIF", Font.PLAIN, 10));
 	    l32.setForeground(Color.RED);
-		l32.setBounds(250,210,150,20);
+		l32.setBounds(200,210,200,20);
 		add(l32);
 		
 		JLabel l6=new JLabel("AC/ Non-AC: ");
@@ -83,7 +83,7 @@ public class BookHotel extends JFrame implements ActionListener{
 		c2=new Choice();
 		c2.add("Yes");
 		c2.add("No");
-		c2.setBounds(250,230,150,30);
+		c2.setBounds(200,230,150,30);
 		add(c2);
 		
 		JLabel l7=new JLabel("Food Included: ");
@@ -93,7 +93,7 @@ public class BookHotel extends JFrame implements ActionListener{
 		c3=new Choice();
 		c3.add("Yes");
 		c3.add("No");
-		c3.setBounds(250,270,150,30);
+		c3.setBounds(200,270,150,30);
 		add(c3);
 		
 		JLabel l8=new JLabel("ID: ");
@@ -101,7 +101,7 @@ public class BookHotel extends JFrame implements ActionListener{
 		add(l8);
 		
 		l22=new JLabel();
-		l22.setBounds(250,310,150,30);
+		l22.setBounds(200,310,200,30);
 		add(l22);
 		
 		JLabel l9=new JLabel("Number: ");
@@ -109,7 +109,7 @@ public class BookHotel extends JFrame implements ActionListener{
 		add(l9);
 		
 		l23=new JLabel();
-		l23.setBounds(250,350,150,30);
+		l23.setBounds(200,350,200,30);
 		add(l23);
 		
 		JLabel l10=new JLabel("Phone: ");
@@ -117,7 +117,7 @@ public class BookHotel extends JFrame implements ActionListener{
 		add(l10);
 		
 		l24=new JLabel();
-		l24.setBounds(250,390,150,30);
+		l24.setBounds(200,390,200,30);
 		add(l24);
 		
 		JLabel l11=new JLabel("Total Price: ");
@@ -126,7 +126,7 @@ public class BookHotel extends JFrame implements ActionListener{
 		
 		l25=new JLabel();
 		l25.setForeground(Color.RED);
-		l25.setBounds(250,430,190,30);
+		l25.setBounds(200,430,200,30);
 		add(l25);
 		
 		try {
@@ -208,10 +208,15 @@ public class BookHotel extends JFrame implements ActionListener{
 
 			}catch(Exception e) {}
 		}else if(ae.getSource()==b2) {
+			try {
+				Conn c = new Conn();
+				c.s.executeUpdate("delete from bookhotel where username ='"+username+"'");
+			}catch(Exception e) {}
+			
 			if(total >0 &(persons>0 & days>0)) {
 				try {
 					Conn c= new Conn();
-					String query = "insert into bookHotel values('"+l21.getText()+"','"+c1.getSelectedItem()+"', '"+t1.getText()+"', '"+t2.getText()+"', '"+c2.getSelectedItem()+"', '"+c3.getSelectedItem()+"', '"+l22.getText()+"', '"+l23.getText()+"', '"+l24.getText()+"', '"+l25.getText()+"')" ;
+					String query = "insert into bookHotel values('"+ username +"','"+c1.getSelectedItem()+"', '"+t1.getText()+"', '"+t2.getText()+"', '"+c2.getSelectedItem()+"', '"+c3.getSelectedItem()+"', '"+l22.getText()+"', '"+l23.getText()+"', '"+l24.getText()+"', '"+l25.getText()+"')" ;
 					c.s.executeUpdate(query);
 					JOptionPane.showMessageDialog(null, "Hotel Booked Successfully");				
 			        this.dispose();

@@ -25,7 +25,7 @@ public class CheckHotels extends JFrame implements Runnable {
     }
    
 	CheckHotels(){
-		setBounds(250,60,1200,700);
+		setBounds(300,90,1200,700);
 	    this.setResizable(false);
 	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		

@@ -18,7 +18,7 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
 
       JPanel p1 = new JPanel();
       p1.setBackground(new Color(133, 193, 233));
-      p1.setBounds(0, 0, 500, 400);
+      p1.setBounds(2, 1, 500, 400);
       p1.setLayout(null);
       add(p1);
 
@@ -28,7 +28,7 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
       p1.add(l1);
 
       t1 = new JTextField();
-      t1.setBounds(190, 20, 180, 25);
+      t1.setBounds(190, 20, 170, 25);
       t1.setBorder(BorderFactory.createEmptyBorder());
       t1.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
       p1.add(t1);
@@ -39,7 +39,7 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
       p1.add(l2);
 
       t2 = new JTextField();
-      t2.setBounds(190, 60, 180, 25);
+      t2.setBounds(190, 60, 250, 25);
       t2.setBorder(BorderFactory.createEmptyBorder());
       t2.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
       p1.add(t2);
@@ -50,7 +50,7 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
       p1.add(l3);
 
       t3 = new JTextField();
-      t3.setBounds(190, 100, 180, 25);
+      t3.setBounds(190, 100, 170, 25);
       t3.setBorder(BorderFactory.createEmptyBorder());
       t3.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
       p1.add(t3);
@@ -78,7 +78,7 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
       p1.add(l5);
 
       t5 = new JTextField();
-      t5.setBounds(190, 180, 180, 25);
+      t5.setBounds(190, 180, 250, 25);
       t5.setBorder(BorderFactory.createEmptyBorder());
       t5.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
       p1.add(t5);
@@ -102,7 +102,7 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
       p1.add(l7);
 
       t7 = new JTextField();
-      t7.setBounds(190, 260, 180, 25);
+      t7.setBounds(190, 260, 250, 25);
       t7.setBorder(BorderFactory.createEmptyBorder());
       t7.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
       p1.add(t7);
@@ -148,15 +148,15 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
 	        if( mobileNo.length()==0){  mobileNo= "9850318932";}
 	        if (emailID.length()==0) {  emailID ="Not Known";}
 
-	    	String query = "insert into account values('"+username+"','"+name+"','"+password+"','"+security+"','"+answer+"','"+mobileNo+"','"+emailID+"')";
 	    	
 	    	try {
 	    		Conn c = new Conn();
+		    	String query = "insert into account values('"+username+"','"+name+"','"+password+"','"+security+"','"+answer+"','"+mobileNo+"','"+emailID+"')";
 	    		c.s.executeUpdate(query);
 	    		JOptionPane.showMessageDialog(null, "Account Created Successfully");
 	    		
 	    		this.setVisible(false);
-	    		new Login().setVisible(true);
+	    		new Login(username,password).setVisible(true);
 	    	}
 	    	catch(SQLIntegrityConstraintViolationException e) {		     	
 	    		JOptionPane.showMessageDialog(null, "User already exist","Please try another usename",JOptionPane.ERROR_MESSAGE);
@@ -170,7 +170,7 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
 	    }
 	    else if(ae.getSource() == b2) {
 	    	this.setVisible(false);
-	    	new Login().setVisible(true);
+	    	new Login("","").setVisible(true);
 	    }
 	    else if(ae.getSource() == c1) {
 	    	

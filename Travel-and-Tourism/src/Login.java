@@ -10,8 +10,10 @@ public class Login extends JFrame implements ActionListener{
     JButton b1, b2, b3;
     JTextField t1;
     JPasswordField t2;
-	Login(){
-     
+    String username=null, password=null;
+	Login(String username, String password){
+      this.username=username;
+      this.password=password;
       setLayout(null); //BorderLayout, FlowLayout, GridLayout,Grid
       getContentPane().setBackground(Color.WHITE);
       setBounds(300, 250, 900, 400);
@@ -20,7 +22,7 @@ public class Login extends JFrame implements ActionListener{
       
       JPanel p1 = new JPanel();
       p1.setBackground(new Color(131, 193, 233));
-      p1.setBounds(0, 0, 400, 400);
+      p1.setBounds(2, 2, 400, 400);
       p1.setLayout(null);
       add(p1);
    
@@ -33,7 +35,7 @@ public class Login extends JFrame implements ActionListener{
 
       JPanel p2 = new JPanel();
       p2.setLayout(null);
-      p2.setBounds(400, 30, 450, 300);
+      p2.setBounds(415, 30, 450, 300);
       add(p2);
 
       JLabel l2 = new JLabel("Username");
@@ -41,7 +43,7 @@ public class Login extends JFrame implements ActionListener{
       l2.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
       p2.add(l2);
 
-      t1 = new JTextField();
+      t1 = new JTextField(username);
       t1.setBounds(60, 60, 300, 30);
       t1.setBorder(BorderFactory.createEmptyBorder());
       t1.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
@@ -52,7 +54,7 @@ public class Login extends JFrame implements ActionListener{
       l3.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
       p2.add(l3);
 
-      t2 = new JPasswordField ();
+      t2 = new JPasswordField (password);
       t2.setBounds(60, 150, 300, 30);
       t2.setBorder(BorderFactory.createEmptyBorder());
       t2.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
@@ -84,7 +86,7 @@ public class Login extends JFrame implements ActionListener{
       p2.add(b3);
     
       JLabel l4 = new JLabel("Trouble in Login...");
-      l4.setBounds(300, 250, 100, 20);
+      l4.setBounds(300, 250, 150, 20);
       l4.setForeground(Color.RED);
       p2.add(l4);
       
@@ -130,6 +132,6 @@ public class Login extends JFrame implements ActionListener{
    }
 
     public static void main(String[] args){
-        new Login();
+        new Login("","");
      }
 }
