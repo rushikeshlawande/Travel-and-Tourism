@@ -242,6 +242,7 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 				 Conn c = new Conn();
 				 c.s.executeUpdate(query);
 				 JOptionPane.showMessageDialog(null,"Customer Details Updated Successfully");
+				 Dashboard.username=username1;
 			}catch(Exception e) {
 	     	   JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
 			}
