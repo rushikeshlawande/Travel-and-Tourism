@@ -12,10 +12,10 @@ public class ForgotPassword extends JFrame implements ActionListener{
      setBounds(300,250,870,380);
      getContentPane().setBackground(Color.WHITE);
      setLayout(null);
+	 setResizable(false);
+	 setDefaultCloseOperation(DISPOSE_ON_CLOSE);
      
      Image i1 = new ImageIcon(this.getClass().getResource("/forgotpassword.png")).getImage();
-     //ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("/login1.png"));
-    // Image i2 = i1.SCALE_DEFAULT();
      Image i2 = i1.getScaledInstance(300,300, Image.SCALE_DEFAULT);
      ImageIcon i3 = new ImageIcon(i2);
      JLabel l6 = new JLabel(i3);
@@ -134,7 +134,6 @@ public class ForgotPassword extends JFrame implements ActionListener{
     		   t1.setText("");
 			   t2.setEditable(true);
 			   t3.setEditable(true);
-			   //t5.setEditable(true);
         	   JOptionPane.showMessageDialog(null, "Username Not Found!","Error",JOptionPane.ERROR_MESSAGE);
            }
 
@@ -161,7 +160,7 @@ public class ForgotPassword extends JFrame implements ActionListener{
 	    	
 	    		    }
 	    else if(ae.getSource() == b3) {
-	    	this.setVisible(false);
+			this.dispose();
 	    	new Login().setVisible(true);
 	    	
 	    }

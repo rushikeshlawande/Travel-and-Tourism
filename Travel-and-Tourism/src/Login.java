@@ -11,11 +11,12 @@ public class Login extends JFrame implements ActionListener{
     JTextField t1;
     JPasswordField t2;
 	Login(){
-     // setSize(400,400);
-     // setLocation(400,200);
+     
       setLayout(null); //BorderLayout, FlowLayout, GridLayout,Grid
       getContentPane().setBackground(Color.WHITE);
       setBounds(300, 250, 900, 400);
+	  setResizable(false);
+	 
       
       JPanel p1 = new JPanel();
       p1.setBackground(new Color(131, 193, 233));
@@ -24,12 +25,9 @@ public class Login extends JFrame implements ActionListener{
       add(p1);
    
       Image i1 = new ImageIcon(this.getClass().getResource("/login1.png")).getImage();
-      //ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("/login1.png"));
-     // Image i2 = i1.SCALE_DEFAULT();
       Image i2 = i1.getScaledInstance(320,300, Image.SCALE_DEFAULT);
       ImageIcon i3 = new ImageIcon(i2);
       JLabel l1 = new JLabel(i3);
-      //JLabel l1 = new JLabel();
       l1.setBounds(1, 1, 400, 350);
       p1.add(l1);
 
@@ -107,7 +105,7 @@ public class Login extends JFrame implements ActionListener{
                 ResultSet rs = c.s.executeQuery(sql);	
                 
                 if(rs.next()) {
-                	this.setVisible(false);
+					this.dispose();
                 	new Loading(username).setVisible(true);
                 }else {
          		   t1.setText("");
@@ -117,16 +115,15 @@ public class Login extends JFrame implements ActionListener{
                 }
 	    	}
 	    	catch(Exception e){
-				   e.printStackTrace();
-		     	   JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
+		     	JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
 	    	}
 	    }
 	    else if(ae.getSource() == b2) {
-	    	this.setVisible(false);
+			this.dispose();
 	    	new Signup().setVisible(true);
 	    }
 	    else if(ae.getSource() == b3) {
-	    	this.setVisible(false);
+			this.dispose();
 	    	new ForgotPassword().setVisible(true);
 	    }
 	   

@@ -14,6 +14,8 @@ public class ViewCustomer extends JFrame implements ActionListener{
 		setBounds(450, 150, 900, 600);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
+	    setResizable(false);
+	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		Image i1 = new ImageIcon(this.getClass().getResource("/9.jpg")).getImage();
 	    Image i2 = i1.getScaledInstance(450,260, Image.SCALE_DEFAULT);
@@ -133,7 +135,10 @@ public class ViewCustomer extends JFrame implements ActionListener{
 	    	   Conn c = new Conn();
 			   String sql = "select * from customer where username = '"+username+"'";
 			   ResultSet rs = c.s.executeQuery(sql);
-			   while(rs.next()) {
+			    if(rs.next() == false) {
+					 JOptionPane.showMessageDialog(null,"Customer Details are Not Added","Please Add Customer Details",JOptionPane.ERROR_MESSAGE);
+		       }else {
+			     do {
 				   l11.setText(rs.getString("username"));
 				   l18.setText(rs.getString("id"));
 				   l12.setText(rs.getString("idnumber"));
@@ -143,12 +148,10 @@ public class ViewCustomer extends JFrame implements ActionListener{
 				   l15.setText(rs.getString("address"));
 				   l16.setText(rs.getString("mobileNo"));
 				   l17.setText(rs.getString("emailID"));
-
-			   }
-			   
+			     }while(rs.next());
+		       }
 		   }
 		   catch(Exception e) {			  
-			   e.printStackTrace();
 	     	   JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
            }
            
@@ -156,13 +159,12 @@ public class ViewCustomer extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent ae) {
 	    if(ae.getSource() == b1) {
-			this.setVisible(false);
+	  	  this.dispose();
 		}
 		
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
           new ViewCustomer("").setVisible(true);
 	}
 

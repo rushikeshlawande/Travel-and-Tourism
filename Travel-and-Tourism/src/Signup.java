@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.border.*;
 import java.awt.event.*;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 public class Signup extends JFrame implements ActionListener, ItemListener{
     
@@ -13,6 +13,8 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
       setBounds(300,250,900,400);
       getContentPane().setBackground(Color.WHITE);
       setLayout(null);
+	  this.setResizable(false);
+	  
 
       JPanel p1 = new JPanel();
       p1.setBackground(new Color(133, 193, 233));
@@ -122,16 +124,15 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
       p1.add(b2);
      
       Image i1 = new ImageIcon(this.getClass().getResource("/signup.png")).getImage();
-      //ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("/login1.png"));
-     // Image i2 = i1.SCALE_DEFAULT();
       Image i2 = i1.getScaledInstance(350, 300, Image.SCALE_DEFAULT);
       ImageIcon i3 = new ImageIcon(i2);
       JLabel l8= new JLabel(i3);
       l8.setBounds(500, 10, 390, 340);
       add(l8);
-     
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
       setVisible(true);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
     }
     
     public void actionPerformed(ActionEvent ae) {
@@ -157,12 +158,14 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
 	    		this.setVisible(false);
 	    		new Login().setVisible(true);
 	    	}
+	    	catch(SQLIntegrityConstraintViolationException e) {		     	
+	    		JOptionPane.showMessageDialog(null, "User already exist","Please try another usename",JOptionPane.ERROR_MESSAGE);
+            }
+	    	catch(java.sql.SQLException e) {		     	
+	    		JOptionPane.showMessageDialog(null, "Please Enter Valid Mobile No ","Invalid Mobile No",JOptionPane.ERROR_MESSAGE);
+            }
 	    	catch (Exception e) {
-				System.out.println("connecton unsuccessfull");
-				e.printStackTrace();
 		     	JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
-
-
 	    	}
 	    }
 	    else if(ae.getSource() == b2) {

@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Dialog.ModalityType;
 import java.awt.event.*;
 import java.sql.*;
 
@@ -20,6 +21,8 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 		setBounds(550, 200, 680, 550);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
+	    setResizable(false);
+	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		Image i1 = new ImageIcon(this.getClass().getResource("/4.jpg")).getImage();
 	    Image i2 = i1.getScaledInstance(200,400, Image.SCALE_DEFAULT);
@@ -158,7 +161,6 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
         b2.addActionListener(this);
         add(b2);
         
-	    
 	    try {
 	    	   Conn c = new Conn();
 			   String sql = "select * from account where username = '"+username+"'";
@@ -176,7 +178,6 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 			   }
 		   }
 		   catch(Exception e) {
-			   e.printStackTrace();
 	     	   JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
 		   }
         
@@ -206,22 +207,25 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 			String query = "insert into customer values('"+username+"','"+id+"','"+idnumber+"','"+name+"','"+gender+"','"+country+"','"+address+"','"+phone+"','"+email+"')";
 			try {
 				 Conn c = new Conn();
-				 //c.s.execute(query);
 				 c.s.executeUpdate(query);
 				 JOptionPane.showMessageDialog(null,"Customer Details Added Successfully");
-				 this.setVisible(false);
-			}catch(Exception e) {
-			   e.printStackTrace();
+				 //this.setVisible(false);
+				 this.dispose();
+
+			}catch(SQLIntegrityConstraintViolationException e) {		     	
+	    		JOptionPane.showMessageDialog(null, "Please Use Update Personal Details To Change Details","User Information Already Added ",JOptionPane.ERROR_MESSAGE);
+            }catch(Exception e) {
 	     	   JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
 			}
 		} else if(ae.getSource() == b2) {
-			this.setVisible(false);
+			//this.setVisible(false);
+			this.dispose();
 		}
-		
+	
+
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args){
           new AddCustomer("").setVisible(true);
 	}
 

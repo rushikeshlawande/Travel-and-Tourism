@@ -8,24 +8,27 @@ public class BookPackage extends JFrame implements ActionListener {
 	JLabel l11, l12, l13, l14, l15, l16, label;
 	JTextField t1;
 	JButton b1, b2, b3;
-	int cost = 1;
+	int cost = 0;
 	long price = 0;
-	int persons = 1;
-	String username;
+	int persons = 0;
+	String username = null;
 	boolean check=false;
+	
 	BookPackage(String username){
+		
 		this.username = username;
 		
-		setBounds(460, 200, 900, 480);
+		setBounds(450, 150, 900, 480);
 		setLayout(null);
 		getContentPane().setBackground(Color.WHITE);
-        
+	    setResizable(false);
+	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-		Image i1 = new ImageIcon(this.getClass().getResource("15.jpg")).getImage();
-	    Image i2 = i1.getScaledInstance(380,410, Image.SCALE_DEFAULT);
+		Image i1 = new ImageIcon(this.getClass().getResource("bookpackage.png")).getImage();
+	    Image i2 = i1.getScaledInstance(400,490, Image.SCALE_DEFAULT);
 	    ImageIcon i3 = new ImageIcon(i2);
 	    l16 = new JLabel(i3);
-	    l16.setBounds(480, 40, 400, 350);
+	    l16.setBounds(400, 0, 530, 470);
 	    add(l16);
 	    
 		JLabel l1 = new JLabel("BOOK PACKAGE");
@@ -63,12 +66,12 @@ public class BookPackage extends JFrame implements ActionListener {
 		l4.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		add(l4);
 		
-		t1 = new JTextField("1");
+		t1 = new JTextField("0");
 		t1.setToolTipText("enter a number");
 	    t1.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
 		t1.setBounds(250, 150, 35,25);
-		label = new JLabel();
-		label.setBounds(280, 150, 150, 25);
+		label = new JLabel("Maximun Limit 9 Persons");
+		label.setBounds(290, 150, 260, 25);
 	    label.setFont(new Font("SAN_SERIF", Font.PLAIN, 14));
 	    label.setForeground(Color.RED);
 		add(label);
@@ -167,42 +170,41 @@ public class BookPackage extends JFrame implements ActionListener {
 			}
 			try {
 			    persons = Integer.parseInt(t1.getText());
-			    if(persons>99) {
-			    	JOptionPane.showMessageDialog(this,"Please Enter Digit less than 100");
-					t1.setText("1");
-					persons = 0;
+			    if(persons>20) {
+					t1.setText("0");
 			    }
 			} catch(Exception e) {
-				label.setText("Enter Digits 0-9");
-				persons = 0;
-				t1.setText("1");
+				t1.setText("0");
 			}
+			persons = Integer.parseInt(t1.getText());
+			if(cost*persons > 0) {
 			price = cost *persons;
 			l15.setText("Rs " + price);
-			
+			}else {
+				l15.setText("Rs 0" );
+				persons = 0;
+				label.setText("Enter the valid number 1-20");
+			}
 		}else if(ae.getSource() == b2) {
-			if(price == cost *persons)
+			if(price > 0)
 			{
 				try {
-					if(l15.getText().equals("RS 0")) {System.out.println("please select the Package");}
 					Conn c =new Conn();
 				    c.s.executeUpdate("insert into bookpackage values('"+l11.getText()+"',"
 				    		+ "'"+c1.getSelectedItem()+"','"+persons+"','"+l12.getText()+"',"
 				    				+ "'"+l13.getText()+"','"+l14.getText()+"','"+price+"')");
 				    JOptionPane.showMessageDialog(null,"Your Package Booked Successfully");
-					//c.close();
-					//s.close();
+				
 				}catch(Exception e) {
-					e.printStackTrace();
 					System.out.println(e);
 				}
-				this.setVisible(false);
+		        this.dispose();
 			}else {
-				JOptionPane.showMessageDialog(null,"Please Check Price & Book");
+				JOptionPane.showMessageDialog(null,"total persons and price cannot be 0 ");
 			}
 			
 		}else if(ae.getSource() == b3) {
-			this.setVisible(false);
+	        this.dispose();
 		}
 	}
 	

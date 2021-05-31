@@ -4,16 +4,19 @@ import java.awt.*;
 public class CheckPackage extends JFrame{
 
 	CheckPackage(){
-		setBounds(460,200,900,600);
-		String[] package1 = new String[] {"GOLD PACKAGE", "6 Days and 7 Nights", "Airport Assistance", "Half Day City Tour","Daily Buffet", "Welcome Drinks on Arrival", "Full Day 3 Island Cruise", "English Speaking Guide", "BOOK NOW!", "SUMMER SPECIAL!", "RS 12000/-", "/18.jpg" };
+		setBounds(450, 150,900,600);
+	    setResizable(false);
+	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-		String[] package2 = new String[] {"SILVER PACKAGE", "5 Days and 6 Nights", "Toll Free and Entrance Free Tickets", "Meet and Greet at Airport", "Welcome Drinks on Arrival", "Night Safari", "Full Day 3 Island Cruise","Cruise with Dinner", "BOOK NOW!", "WINTER SPECIAL!", "RS 24000/-", "/17.jpg" };
+		String[] package1 = new String[] {"GOLD PACKAGE", "6 Days and 7 Nights", "Airport Assistance", "Half Day City Tour","Daily Buffet", "Welcome Drinks on Arrival", "Full Day 3 Island Cruise", "English Speaking Guide", "BOOK NOW!", "SUMMER SPECIAL!", "RS 12000/-", "/package1.jpg" };
 
-		String[] package3 = new String[] {"BRONZE PACKAGE", "6 Days and 5 Nights", "Return Airfare", "Free Clubing, Horse Riding & Other games", "Welcome Drinks on Arrival", "Daily Buffet", "Stay in 5 Star Hotel","BBQ Dinner", "BOOK NOW!", "WINTER SPECIAL!", "RS 32000/-", "/16.jpg" };
+		String[] package2 = new String[] {"SILVER PACKAGE", "5 Days and 6 Nights", "Toll Free and Entrance Free Tickets", "Meet and Greet at Airport", "Welcome Drinks on Arrival", "Night Safari", "Full Day 3 Island Cruise","Cruise with Dinner", "BOOK NOW!", "WINTER SPECIAL!", "RS 24000/-", "/package2.jpg" };
+
+		String[] package3 = new String[] {"BRONZE PACKAGE", "6 Days and 5 Nights", "Return Airfare", "Free Clubing, Horse Riding & Other games", "Welcome Drinks on Arrival", "Daily Buffet", "Stay in 5 Star Hotel","BBQ Dinner", "BOOK NOW!", "WINTER SPECIAL!", "RS 32000/-", "/package3.jpg" };
 		
-		String[] package4 = new String[] {"PACKAGE-4", "5 Days and 6 Nights", "Toll Free and Entrance Free Tickets", "Meet and Greet at Airport", "Welcome Drinks on Arrival", "Night Safari", "Full Day 3 Island Cruise","Cruise with Dinner", "BOOK NOW!", "WINTER SPECIAL!", "RS 18000/-", "/17.jpg" };
+		String[] package4 = new String[] {"PACKAGE-4", "5 Days and 6 Nights", "Toll Free and Entrance Free Tickets", "Meet and Greet at Airport", "Welcome Drinks on Arrival", "Night Safari", "Full Day 3 Island Cruise","Cruise with Dinner", "BOOK NOW!", "WINTER SPECIAL!", "RS 18000/-", "/package4.jpg" };
 
-		String[] package5 = new String[] {"PACKAGE-5", "6 Days and 5 Nights", "Return Airfare", "Free Clubing, Horse Riding & Other games", "Welcome Drinks on Arrival", "Daily Buffet", "Stay in 5 Star Hotel","BBQ Dinner", "BOOK NOW!", "WINTER SPECIAL!", "RS 20000/-", "/16.jpg" };
+		String[] package5 = new String[] {"PACKAGE-5", "6 Days and 5 Nights", "Return Airfare", "Free Clubing, Horse Riding & Other games", "Welcome Drinks on Arrival", "Daily Buffet", "Stay in 5 Star Hotel","BBQ Dinner", "BOOK NOW!", "WINTER SPECIAL!", "RS 20000/-", "/package5.jpg" };
 
 		
 		JTabbedPane pane = new JTabbedPane();
@@ -34,9 +37,6 @@ public class CheckPackage extends JFrame{
 		JPanel p5 = createPackage(package5);
 		pane.addTab("Package 5", null, p5);
 		add(pane, BorderLayout.CENTER);
-		
-	      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 	}
 	
 	public JPanel createPackage(String[] pack) {
@@ -110,16 +110,14 @@ public class CheckPackage extends JFrame{
 		p1.add(l11);
 		
 		Image i1 = new ImageIcon(this.getClass().getResource(pack[11])).getImage();
-	    Image i2 = i1.getScaledInstance(380,410, Image.SCALE_DEFAULT);
+	    Image i2 = i1.getScaledInstance(565,470, Image.SCALE_DEFAULT);
 	    ImageIcon i3 = new ImageIcon(i2);
 	    JLabel l12 = new JLabel(i3);
-	    l12.setBounds(320, 30, 500, 450);
+	    l12.setBounds(300, 15, 565, 470);
 	    p1.add(l12);
-		
 		return p1;
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
         new CheckPackage().setVisible(true);
 	}
 

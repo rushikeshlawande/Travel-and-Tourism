@@ -1,8 +1,8 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
 
 public class Conn {
 	Connection c;
@@ -16,14 +16,12 @@ public class Conn {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			c = DriverManager.getConnection(url,user,password);
 			s = c.createStatement();
-			System.out.println("connecton successfull");
 		}
 		catch(Exception e) {
-			System.out.println("connecton unsuccessfull");
+			JOptionPane.showMessageDialog(null, "Failed To Connect Database");
+
 		}
 		
-		//c.close();
-		//s.close();
 	}
   public static void main(String []args) {
 	  new Conn();

@@ -7,11 +7,19 @@ public class Dashboard extends JFrame implements ActionListener{
 	JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15;
 	String username;
 	Dashboard(String username){
-	     this.username = username;
-		//setSize(1950,100);
+	    this.username = username;
 		setExtendedState(JFrame.MAXIMIZED_BOTH);  // gives fullscreen frame
 		setLayout(null);
-		
+	    setResizable(true);
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		/*JDialog jd = new JDialog(this);
+		jd.setModal(true);
+		jd.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		jd.setLocationByPlatform(false);
+		jd.pack();
+		jd.setVisible(true);
+		*/
 		JPanel p1 = new JPanel();
 		p1.setLayout(null);
 		p1.setBounds(0, 0, 1950, 65);
@@ -91,12 +99,12 @@ public class Dashboard extends JFrame implements ActionListener{
 		b6.addActionListener(this);
 		p2.add(b6);
 	    
-		b7 = new JButton("View Package");
+		b7 = new JButton("View Booked Package");
 		b7.setBackground(new Color(0, 0, 102));
 		b7.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		b7.setForeground(Color.WHITE);
-		b7.setMargin(new Insets(0, 0, 0, 115));
-		b7.setBounds(0, 240, 300, 40);
+		b7.setMargin(new Insets(0, 0, 0, 75));
+		b7.setBounds(0, 240, 330, 40);
 		b7.addActionListener(this);
 		p2.add(b7);
 	    
@@ -187,11 +195,8 @@ public class Dashboard extends JFrame implements ActionListener{
 	    l4.setFont(new Font("Courier", Font.BOLD, 45));
 	    l1.add(l4);
         
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 	}
 	
-
     public void actionPerformed(ActionEvent ae)
     {
     	if (ae.getSource() == b1) {
@@ -209,17 +214,31 @@ public class Dashboard extends JFrame implements ActionListener{
     		new UpdateCustomer(username).setVisible(true);
     	}else if (ae.getSource() == b3) {
     		new ViewCustomer(username).setVisible(true);
+    	}else if (ae.getSource() == b4) {
+    		new DeleteCustomer(username).setVisible(true);
     	}else if (ae.getSource() == b5) {
     		new CheckPackage().setVisible(true);
     	}else if (ae.getSource() == b6) {
     		new BookPackage(username).setVisible(true);
+    	}else if (ae.getSource() == b7) {
+    		new ViewBookedPackage(username).setVisible(true);
+    	}else if (ae.getSource() == b15) {
+    		new About().setVisible(true);
+    	}else if (ae.getSource() == b9) {
+    		new BookHotel(username).setVisible(true);
+    	}else if (ae.getSource() == b10) {
+    		new ViewBookedHotel(username).setVisible(true);
+    	}else if (ae.getSource() == b12) {
+    		new Payment().setVisible(true);
+    	}else if (ae.getSource() == b8) {
+    		new CheckHotels().setVisible(true);
+    	}else if (ae.getSource() == b11) {
+    		new Destinations().setVisible(true);
     	}
     }
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		new Dashboard("").setVisible(true);
-
 	}
 
 }

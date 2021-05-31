@@ -34,8 +34,10 @@ public class Loading extends JFrame implements Runnable{
 		setBounds(450, 200, 650, 400);
 		getContentPane().setBackground(Color.white);
 		setLayout(null);
+	    setResizable(false);
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel l1 = new JLabel("Tushar Travel and Tourism Application");
+		JLabel l1 = new JLabel("Travel and Tourism Application");
 		l1.setBounds(50, 20, 600, 40);
 		l1.setFont(new Font("Raleway",Font.BOLD, 35));
 		l1.setForeground(Color.BLUE);
@@ -61,12 +63,10 @@ public class Loading extends JFrame implements Runnable{
 		
 		t.start();
 		
-	   // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
         new Loading(" ").setVisible(true);
 	}
 
