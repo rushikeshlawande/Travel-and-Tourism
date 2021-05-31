@@ -18,17 +18,17 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 	AddCustomer(String username){
 		this.username = username;
 		setTitle("Add Customer ");
-		setBounds(550, 200, 680, 550);
+		setBounds(550, 200, 800, 550);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 	    setResizable(false);
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
-		Image i1 = new ImageIcon(this.getClass().getResource("/4.jpg")).getImage();
-	    Image i2 = i1.getScaledInstance(200,400, Image.SCALE_DEFAULT);
+		Image i1 = new ImageIcon(this.getClass().getResource("addcustomerinfo.jpg")).getImage();
+	    Image i2 = i1.getScaledInstance(370,420, Image.SCALE_DEFAULT);
 	    ImageIcon i3 = new ImageIcon(i2);
 	    JLabel l10 = new JLabel(i3);
-	    l10.setBounds(400, 0, 250,500);
+	    l10.setBounds(400, 30, 370,420);
 	    add(l10);
 		
 		JLabel l11 = new JLabel("Add Customer Details");

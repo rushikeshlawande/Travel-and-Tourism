@@ -17,17 +17,17 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 	UpdateCustomer(String username){
 		this.username = username;
 		setTitle("Update Customer ");
-		setBounds(550, 200, 680, 550);
+		setBounds(500, 200, 750, 550);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 	    this.setResizable(false);
 	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
-		Image i1 = new ImageIcon(this.getClass().getResource("/8.jpg")).getImage();
-	    Image i2 = i1.getScaledInstance(200,400, Image.SCALE_DEFAULT);
+		Image i1 = new ImageIcon(this.getClass().getResource("updatecustomer.jpg")).getImage();
+	    Image i2 = i1.getScaledInstance(800,1100, Image.SCALE_DEFAULT);
 	    ImageIcon i3 = new ImageIcon(i2);
 	    JLabel l10 = new JLabel(i3);
-	    l10.setBounds(390, 10, 270, 500);
+	    l10.setBounds(390, 45, 800, 1100);
 	    add(l10);
 		
 		JLabel l11 = new JLabel("Update Customer Details");

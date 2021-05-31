@@ -17,14 +17,14 @@ public class ViewCustomer extends JFrame implements ActionListener{
 	    setResizable(false);
 	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
-		Image i1 = new ImageIcon(this.getClass().getResource("/9.jpg")).getImage();
+		Image i1 = new ImageIcon(this.getClass().getResource("viewcustomer1.jpg")).getImage();
 	    Image i2 = i1.getScaledInstance(450,260, Image.SCALE_DEFAULT);
 	    ImageIcon i3 = new ImageIcon(i2);
 	    JLabel l10 = new JLabel(i3);
 	    l10.setBounds(0, 340, 450, 280);
 	    add(l10);
 	    
-	    Image i4 = new ImageIcon(this.getClass().getResource("/12.jpg")).getImage();
+	    Image i4 = new ImageIcon(this.getClass().getResource("viewcustomer2.jpg")).getImage();
 	    Image i5 = i4.getScaledInstance(450,240, Image.SCALE_DEFAULT);
 	    ImageIcon i6 = new ImageIcon(i5);
 	    JLabel l20 = new JLabel(i6);
