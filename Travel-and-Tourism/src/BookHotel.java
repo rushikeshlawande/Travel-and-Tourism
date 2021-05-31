@@ -9,17 +9,25 @@ public class BookHotel extends JFrame implements ActionListener{
     JLabel l21,l22,l23,l24,l25, l31, l32;
     JButton b1,b2,b3;
     String username;
+	JFrame dashboard;
     int total=0;
     int persons=0, days=0; 
     
-	BookHotel(String username){
+	BookHotel(String username,JFrame dash){
 		this.username = username;
+		dashboard=dash;
 		setBounds(420, 200,1100,600);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 	    setResizable(false);
-	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
+	    addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dashboard.setEnabled(true);
+    			dashboard.setVisible(true);
+    			dispose();
+    		}
+    });		
 		JLabel l1=new JLabel("Book Hotel");
 		l1.setFont(new Font("Tamoha",Font.PLAIN,28));
 		l1.setBounds(100,10,300,30);
@@ -220,15 +228,19 @@ public class BookHotel extends JFrame implements ActionListener{
 					c.s.executeUpdate(query);
 					JOptionPane.showMessageDialog(null, "Hotel Booked Successfully");				
 			        this.dispose();
+					dashboard.setEnabled(true);
+					dashboard.setVisible(true);
 				}catch(Exception e) {	JOptionPane.showMessageDialog(null, e);}
 			}else {l25.setText("Please enter the valid number");}
 		}else if(ae.getSource()==b3) {
 	        this.dispose();
+			dashboard.setEnabled(true);
+			dashboard.setVisible(true);
 		}
 	}
 	
 	public static void main(String[] args) {
-		new BookHotel(" ").setVisible(true);
+		new BookHotel(" ",new JFrame()).setVisible(true);
 
 	}
 

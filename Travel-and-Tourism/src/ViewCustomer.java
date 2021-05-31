@@ -7,16 +7,24 @@ public class ViewCustomer extends JFrame implements ActionListener{
     
 	JButton b1;
 	String username;
+	JFrame dashboard;
 	
-	ViewCustomer(String username){
+	ViewCustomer(String username, JFrame dash){
 		this.username = username;
+		dashboard=dash;
 		setTitle("View Customer");
 		setBounds(550, 200, 930, 600);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 	    setResizable(false);
-	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
+	    addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dashboard.setEnabled(true);
+    			dashboard.setVisible(true);
+    			dispose();
+    		}
+    });		
 		Image i1 = new ImageIcon(this.getClass().getResource("viewcustomer1.jpg")).getImage();
 	    Image i2 = i1.getScaledInstance(450,260, Image.SCALE_DEFAULT);
 	    ImageIcon i3 = new ImageIcon(i2);
@@ -136,7 +144,8 @@ public class ViewCustomer extends JFrame implements ActionListener{
 			   String sql = "select * from customer where username = '"+username+"'";
 			   ResultSet rs = c.s.executeQuery(sql);
 			    if(rs.next() == false) {
-					 JOptionPane.showMessageDialog(null,"Customer Details are Not Added","Please Add Customer Details",JOptionPane.ERROR_MESSAGE);
+					 JOptionPane.showMessageDialog(null,"Customer Details are are Empty","Please Add Customer Details",JOptionPane.ERROR_MESSAGE);
+					 dashboard.setVisible(true);
 		       }else {
 			     do {
 				   l11.setText(rs.getString("username"));
@@ -159,13 +168,15 @@ public class ViewCustomer extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent ae) {
 	    if(ae.getSource() == b1) {
-	  	  this.dispose();
+	  	 this.dispose();
+	  	dashboard.setEnabled(true);
+		dashboard.setVisible(true);
 		}
 		
 	}
 	
 	public static void main(String[] args) {
-          new ViewCustomer("kunal").setVisible(true);
+          new ViewCustomer(" ",new JFrame()).setVisible(true);
 	}
 
 }

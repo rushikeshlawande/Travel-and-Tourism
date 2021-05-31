@@ -7,14 +7,24 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 
 	JButton b1;
 	String username;
-	public ViewBookedHotel(String username) {
+	JFrame dashboard;
+
+	public ViewBookedHotel(String username, JFrame dash) {
+		dashboard=dash;
+
 		this.username = username;
 		setBounds(420, 200,1100,550);
 		getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 	    setResizable(false);
-	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
+	    addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dashboard.setEnabled(true);
+    			dashboard.setVisible(true);
+    			dispose();
+    		}
+    });		
 		ImageIcon i1=new ImageIcon(ClassLoader.getSystemResource("viewbookedhotel.jpg"));
 		Image i2= i1.getImage().getScaledInstance(650,440,Image.SCALE_DEFAULT);
 		ImageIcon i3=new ImageIcon(i2);
@@ -119,7 +129,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 			ResultSet rs =c.s.executeQuery("select * from bookHotel where username = '"+username+"'");
 			if(rs.next() == false) {
 				 JOptionPane.showMessageDialog(null,"No Hotel Booked ","Please Book a Package",JOptionPane.ERROR_MESSAGE);
-				 
+				 dashboard.setVisible(true);	 
 	       }else {
 		      do {
 				l11.setText(rs.getString("username"));
@@ -141,9 +151,11 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 
 	public void actionPerformed(ActionEvent ae) {
 		  this.dispose();
+		  dashboard.setEnabled(true);
+		  dashboard.setVisible(true);
 	}
 	public static void main(String[] args) {
-		new ViewBookedHotel("").setVisible(true);
+		new ViewBookedHotel("",new JFrame()).setVisible(true);
 
 	}
 	

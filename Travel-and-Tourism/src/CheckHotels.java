@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.*;
 
 public class CheckHotels extends JFrame implements Runnable {
@@ -6,6 +9,8 @@ public class CheckHotels extends JFrame implements Runnable {
     JLabel l1,l2,l3,l4,l5,l6,l7,l8,l9,l10;
     JLabel[] label=new JLabel[] { l1,l2,l3,l4,l5,l6,l7,l8,l9,l10};
     JLabel caption, caption1;
+	JFrame dashboard;
+
     public void run() {
     	
     String[] text=new String[] {
@@ -24,11 +29,19 @@ public class CheckHotels extends JFrame implements Runnable {
     catch(Exception e) { }
     }
    
-	CheckHotels(){
+	CheckHotels(JFrame dash){
+		dashboard=dash;
+
 		setBounds(300,90,1200,700);
 	    this.setResizable(false);
-	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
+	    addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dashboard.setEnabled(true);
+    			dashboard.setVisible(true);
+    			dispose();
+    		}
+    });		
 		Image i1=null,i2=null,i3=null,i4=null,i5=null,i6=null,i7=null,i8=null,i9=null,i10=null;
 		Image[] image=new Image[] { i1,i2,i3,i4,i5,i6,i7,i8,i9,i10 };
 		
@@ -73,7 +86,7 @@ public class CheckHotels extends JFrame implements Runnable {
 
 	}
 	public static void main(String[] args) {
-		new CheckHotels().setVisible(true);
+		new CheckHotels(new JFrame()).setVisible(true);
 	}
 
 }

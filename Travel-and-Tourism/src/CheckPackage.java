@@ -1,13 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class CheckPackage extends JFrame{
+	JFrame dashboard;
 
-	CheckPackage(){
+	CheckPackage(JFrame dash){
+		dashboard=dash;
+
 		setBounds(420, 200,1050,600);
 	    setResizable(false);
-	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
+	    addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dashboard.setEnabled(true);
+    			dashboard.setVisible(true);
+    			dispose();
+    		}
+    });
 		String[] package1 = new String[] {"GOLD PACKAGE", "6 Days and 7 Nights", "Airport Assistance", "Half Day City Tour","Daily Buffet", "Welcome Drinks on Arrival", "Full Day 3 Island Cruise", "English Speaking Guide", "BOOK NOW!", "SUMMER SPECIAL!", "RS 12000/-", "/package1.jpg" };
 
 		String[] package2 = new String[] {"SILVER PACKAGE", "5 Days and 6 Nights", "Toll Free and Entrance Free Tickets", "Meet and Greet at Airport", "Welcome Drinks on Arrival", "Night Safari", "Full Day 3 Island Cruise","Cruise with Dinner", "BOOK NOW!", "WINTER SPECIAL!", "RS 24000/-", "/package2.jpg" };
@@ -118,7 +129,7 @@ public class CheckPackage extends JFrame{
 		return p1;
 	}
 	public static void main(String[] args) {
-        new CheckPackage().setVisible(true);
+        new CheckPackage(new JFrame()).setVisible(true);
 	}
 
 }

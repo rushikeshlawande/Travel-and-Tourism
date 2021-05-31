@@ -10,15 +10,23 @@ public class About extends JFrame implements ActionListener {
     Font f, f1, f2;
     TextArea t1;
     String s;
+	JFrame dashboard;
 
-    public About() {
 
+    public About(JFrame dash) {
+		dashboard=dash;
         setLayout(null);
         JButton b1 = new JButton("Exit");
         add(b1);
         b1.setBounds(180, 430, 120, 20);
-	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-	    setResizable(false);
+        addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dashboard.setEnabled(true);
+    			dashboard.setVisible(true);
+    			dispose();
+    		}
+    });	    setResizable(false);
         b1.addActionListener(this);
 
         Font f = new Font("RALEWAY", Font.BOLD, 180);
@@ -73,10 +81,12 @@ public class About extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         this.dispose();
+		dashboard.setEnabled(true);
+		dashboard.setVisible(true);
     }
 
     public static void main(String[] args) {
-        new About().setVisible(true);
+        new About(new JFrame()).setVisible(true);
     }
 
 }

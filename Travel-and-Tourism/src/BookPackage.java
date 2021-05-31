@@ -12,17 +12,26 @@ public class BookPackage extends JFrame implements ActionListener {
 	long price = 0;
 	int persons = 0;
 	String username = null;
+	JFrame dashboard;
 	boolean check=false;
 	
-	BookPackage(String username){
+	BookPackage(String username,JFrame dash){
 		
 		this.username = username;
+		dashboard=dash;
 		
 		setBounds(480, 200, 950, 480);
 		setLayout(null);
 		getContentPane().setBackground(Color.WHITE);
 	    setResizable(false);
-	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+	    addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dashboard.setEnabled(true);
+    			dashboard.setVisible(true);
+    			dispose();
+    		}
+    });
 
 		Image i1 = new ImageIcon(this.getClass().getResource("bookpackage.png")).getImage();
 	    Image i2 = i1.getScaledInstance(400,490, Image.SCALE_DEFAULT);
@@ -203,18 +212,22 @@ public class BookPackage extends JFrame implements ActionListener {
 					System.out.println(e);
 				}
 		        this.dispose();
+		        dashboard.setEnabled(true);
+				dashboard.setVisible(true);
 			}else {
 				JOptionPane.showMessageDialog(null,"total persons and price cannot be 0 ");
 			}
 			
 		}else if(ae.getSource() == b3) {
 	        this.dispose();
+	        dashboard.setEnabled(true);
+			dashboard.setVisible(true);
 		}
 	}
 	
 	
 	public static void main(String[] args) {
-	    new BookPackage("").setVisible(true);
+	    new BookPackage("",new JFrame()).setVisible(true);
 	}
 
 }

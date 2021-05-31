@@ -6,14 +6,24 @@ import java.awt.event.*;
 public class DeleteCustomer extends JFrame implements ActionListener {
 	JButton b1,b2;
 	String username;
-	DeleteCustomer(String user){
+	JFrame dashboard;
+
+	DeleteCustomer(String user, JFrame dash){
+		dashboard=dash;
+
 		this.username = user;
 		setBounds(550, 200,850,550);
 		setLayout(null);
 		getContentPane().setBackground(Color.WHITE);
 	    setResizable(false);
-	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
+	    addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dashboard.setEnabled(true);
+    			dashboard.setVisible(true);
+    			dispose();
+    		}
+    });		
 		JLabel heading = new JLabel("DELETE CUSTOMER DETAILS");
 		heading.setFont(new Font("Yu Mincho", Font.PLAIN, 20));
 		heading.setBounds(110, 10, 300, 30);
@@ -146,11 +156,13 @@ public class DeleteCustomer extends JFrame implements ActionListener {
 			}catch(Exception e) {}
 		}else if(ae.getSource()== b2) {
 			this.dispose();
+			dashboard.setEnabled(true);
+			dashboard.setVisible(true);
 		}
 	}
 	
 	public static void main(String[] args) {
-		new DeleteCustomer("").setVisible(true);
+		new DeleteCustomer("",new JFrame()).setVisible(true);
 				
 	}
 }

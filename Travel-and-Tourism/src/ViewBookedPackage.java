@@ -8,14 +8,24 @@ public class ViewBookedPackage extends JFrame implements ActionListener{
 
 	JButton b1;
 	String username;
-	public ViewBookedPackage(String user) {
+	JFrame dashboard;
+
+	public ViewBookedPackage(String user, JFrame dash) {
+		dashboard=dash;
+
 		username = user;
 		setBounds(550, 200,800,430);
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 	    setResizable(false);
-	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-	    
+	    addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dashboard.setEnabled(true);
+    			dashboard.setVisible(true);
+    			dispose();
+    		}
+    });	    
 
 		Image i1 = new ImageIcon(this.getClass().getResource("viewpackage.jpg")).getImage();
 	    Image i2 = i1.getScaledInstance(485,410, Image.SCALE_DEFAULT);
@@ -101,7 +111,7 @@ public class ViewBookedPackage extends JFrame implements ActionListener{
 			ResultSet rs =c.s.executeQuery("select * from bookPackage where username ='"+username+"'");
 			if(rs.next() == false) {
 				 JOptionPane.showMessageDialog(null,"No Package Booked ","Please Book a Package",JOptionPane.ERROR_MESSAGE);
-				 
+				 dashboard.setVisible(true); 
 	       }else {
 		     do {
 				l11.setText(rs.getString(1));
@@ -121,10 +131,12 @@ public class ViewBookedPackage extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource() == b1) {
 			  this.dispose();
+			  dashboard.setEnabled(true);
+			  dashboard.setVisible(true);
 		}
 	}
 	public static void main(String[] args) {
-		new ViewBookedPackage("").setVisible(true);
+		new ViewBookedPackage("",new JFrame()).setVisible(true);
 
 	}
 }

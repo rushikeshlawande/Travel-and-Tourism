@@ -13,13 +13,6 @@ public class Dashboard extends JFrame implements ActionListener{
 	    setResizable(true);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		/*JDialog jd = new JDialog(this);
-		jd.setModal(true);
-		jd.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		jd.setLocationByPlatform(false);
-		jd.pack();
-		jd.setVisible(true);
-		*/
 		JPanel p1 = new JPanel();
 		p1.setLayout(null);
 		p1.setBounds(0, 0, 1950, 65);
@@ -197,10 +190,13 @@ public class Dashboard extends JFrame implements ActionListener{
         
 	}
 	
-    public void actionPerformed(ActionEvent ae)
+
+	@SuppressWarnings("deprecation")
+	public void actionPerformed(ActionEvent ae)
     {
     	if (ae.getSource() == b1) {
-    		new AddCustomer(username).setVisible(true);
+    		this.disable();
+    		new AddCustomer(username,this).setVisible(true);
     	}else if (ae.getSource() == b13) {
     		try {
     			Runtime.getRuntime().exec("calc.exe");
@@ -211,29 +207,41 @@ public class Dashboard extends JFrame implements ActionListener{
     			Runtime.getRuntime().exec("notepad.exe");
     		}catch(Exception e) {}
     	}else if (ae.getSource() == b2) {
-    		new UpdateCustomer(username).setVisible(true);
+    		this.disable();
+    		new UpdateCustomer(username,this).setVisible(true);
     	}else if (ae.getSource() == b3) {
-    		new ViewCustomer(username).setVisible(true);
+    		this.disable();
+    		new ViewCustomer(username,this).setVisible(true);
     	}else if (ae.getSource() == b4) {
-    		new DeleteCustomer(username).setVisible(true);
+    		this.disable();
+    		new DeleteCustomer(username,this).setVisible(true);
     	}else if (ae.getSource() == b5) {
-    		new CheckPackage().setVisible(true);
+    		this.disable();
+    		new CheckPackage(this).setVisible(true);
     	}else if (ae.getSource() == b6) {
-    		new BookPackage(username).setVisible(true);
+    		this.disable();
+    		new BookPackage(username,this).setVisible(true);
     	}else if (ae.getSource() == b7) {
-    		new ViewBookedPackage(username).setVisible(true);
+    		this.disable();
+    		new ViewBookedPackage(username,this).setVisible(true);
     	}else if (ae.getSource() == b15) {
-    		new About().setVisible(true);
+    		this.disable();
+    		new About(this).setVisible(true);
     	}else if (ae.getSource() == b9) {
-    		new BookHotel(username).setVisible(true);
+    		this.disable();
+    		new BookHotel(username,this).setVisible(true);
     	}else if (ae.getSource() == b10) {
-    		new ViewBookedHotel(username).setVisible(true);
+    		this.disable();
+    		new ViewBookedHotel(username,this).setVisible(true);
     	}else if (ae.getSource() == b12) {
-    		new Payment().setVisible(true);
+    		this.disable();
+    		new Payment(username,this).setVisible(true);
     	}else if (ae.getSource() == b8) {
-    		new CheckHotels().setVisible(true);
+    		this.disable();
+    		new CheckHotels(this).setVisible(true);
     	}else if (ae.getSource() == b11) {
-    		new Destinations().setVisible(true);
+    		this.disable();
+    		new Destinations(this).setVisible(true);
     	}
     }
 	

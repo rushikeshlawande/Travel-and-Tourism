@@ -5,6 +5,7 @@ import java.sql.*;
 
 public class AddCustomer extends JFrame implements ActionListener, ItemListener{
     
+	private static final JFrame JFrame = null;
 	JTextField t1, t2, t3, t4, t5, t6, t7;
 	JComboBox c1;
 	JRadioButton r1, r2;
@@ -12,16 +13,24 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 	ButtonGroup grp1;
 	String username;
 	String gender = null;
-
+	JFrame dashboard;
 	
-	AddCustomer(String username){
+	AddCustomer(String username, JFrame dash){
+		dashboard=dash;
 		this.username = username;
 		setTitle("Add Customer ");
 		setBounds(550, 200, 900, 550);		
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 	    setResizable(false);
-	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+	    addWindowListener(new WindowAdapter() {
+	    		public void windowClosing(WindowEvent e) {
+                    this.windowClosed(null);
+	    			dashboard.setEnabled(true);
+	    			dashboard.setVisible(true);
+	    			dispose();
+	    		}
+	    });
 		
 		Image i1 = new ImageIcon(this.getClass().getResource("addcustomerinfo.jpg")).getImage();
 	    Image i2 = i1.getScaledInstance(370,420, Image.SCALE_DEFAULT);
@@ -209,6 +218,8 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 				 c.s.executeUpdate(query);
 				 JOptionPane.showMessageDialog(null,"Customer Details Added Successfully");
 				 this.dispose();
+				 dashboard.setEnabled(true);
+				 dashboard.setVisible(true);
 
 			}catch(SQLIntegrityConstraintViolationException e) {		     	
 	    		JOptionPane.showMessageDialog(null, "Please Use Update Personal Details To Change Details","User Information Already Added ",JOptionPane.ERROR_MESSAGE);
@@ -217,13 +228,15 @@ public class AddCustomer extends JFrame implements ActionListener, ItemListener{
 			}
 		} else if(ae.getSource() == b2) {
 			this.dispose();
+			dashboard.setEnabled(true);
+			dashboard.setVisible(true);
 		}
 	
 
 	}
 	
 	public static void main(String[] args){
-          new AddCustomer("").setVisible(true);
+          new AddCustomer("", new JFrame()).setVisible(true);
 	}
 
 }

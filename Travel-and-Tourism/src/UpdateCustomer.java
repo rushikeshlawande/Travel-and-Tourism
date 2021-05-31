@@ -12,10 +12,22 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 	ButtonGroup grp1;
 	String username;
 	String gender = null;
-
+	JFrame dashboard;
 	
-	UpdateCustomer(String username){
+	UpdateCustomer(String username,JFrame dash){
+		dashboard=dash;
 		this.username = username;
+		addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dashboard.setEnabled(true);
+    			dashboard.setVisible(true);
+    			dispose();
+    		}
+
+			
+        });
+		
 		setTitle("Update Customer ");
 		setBounds(450, 200, 970, 500);
 		getContentPane().setBackground(Color.WHITE);
@@ -166,6 +178,8 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 			   if(rs.next() == false) {
 					 JOptionPane.showMessageDialog(null,"Customer Details are Not Added","Please Add Customer Details",JOptionPane.ERROR_MESSAGE);
 					  this.dispose();
+		    		  dashboard.setVisible(true);
+		    			
 			   }
 			   else {
 			     do {
@@ -239,18 +253,25 @@ public class UpdateCustomer extends JFrame implements ActionListener, ItemListen
 				 c.s.executeUpdate("update bookpackage set username ='"+username1+"' where username = '"+username+"'");
 				 c.s.executeUpdate("update bookhotel set username ='"+username1+"' where username = '"+username+"'");
 				 this.dispose();
+				 dashboard.setEnabled(true);
+				 dashboard.setVisible(true);
+				 
 			}catch(Exception e) {
 	     	   JOptionPane.showMessageDialog(null, e,"Database Error!",JOptionPane.ERROR_MESSAGE);
 			}
 		} else if(ae.getSource() == b2) {
 			  this.dispose();
+			  dashboard.setEnabled(true);
+			  dashboard.setVisible(true);
+
+			  
 		}
 	}
 	
 	
 	public static void main(String[] args) {
 		
-          new UpdateCustomer("").setVisible(true);
+          new UpdateCustomer("",new JFrame()).setVisible(true);
 	}
 
 }

@@ -1,8 +1,13 @@
 import javax.swing.*;
 import java.awt.event.*;
 public class Pay extends JFrame implements ActionListener{
-	Pay(String url){
-	  
+	JFrame dashboard;
+    String username;
+	Pay(String url,String username,JFrame dash){
+		dashboard=dash;
+		dashboard.setEnabled(false);
+		dashboard.setVisible(true);
+	    this.username=username;
 		JEditorPane jep =new JEditorPane();
 		jep.setEditable(false);
 		add(jep);
@@ -23,17 +28,24 @@ public class Pay extends JFrame implements ActionListener{
 	    jep.add(b1);
 		
 		setBounds(250, 50,1100,750);
-	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-	}
+		addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dispose();
+    			dashboard.setEnabled(true);
+				dashboard.setVisible(true);
+    		}
+    });	}
 	
 	public void actionPerformed(ActionEvent ae){
 		this.dispose();
-		new Payment().setVisible(true);
+		dashboard.setVisible(true);
+		new Payment(username,dashboard).setVisible(true);
 	}
 	
 
 	public static void main(String[] args) {
-		new Pay("").setVisible(true);
+		new Pay("","",new JFrame()).setVisible(true);
 	
 	}
 }

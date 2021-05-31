@@ -4,19 +4,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Payment extends JFrame implements ActionListener, ItemListener {
 	JButton b1,b2;
 	JRadioButton r1, r2, r3, r4;
 	ButtonGroup grp1;
 	String url = "https://www.billdesk.com";
-	Payment(){
+	JFrame dashboard;
+    String username;
+	Payment(String username,JFrame dash){
+		dashboard=dash;
+		this.username= username;
+
 		setBounds(500,200,800,600);
 		setLayout(null);
 		getContentPane().setBackground(Color.WHITE);
 	    setResizable(false);
-	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-	
+	    addWindowListener(new WindowAdapter() {
+    		public void windowClosing(WindowEvent e) {
+                this.windowClosed(null);
+    			dispose();
+                dashboard.enable(true);
+    			dashboard.setVisible(true);
+    			
+    		}
+    });	
 		Image i1 = new ImageIcon(this.getClass().getResource("payment1.jpg")).getImage();
 	    Image i2 = i1.getScaledInstance(800,400, Image.SCALE_DEFAULT);
 	    ImageIcon i3 = new ImageIcon(i2);
@@ -96,12 +110,17 @@ public class Payment extends JFrame implements ActionListener, ItemListener {
 	public void actionPerformed(ActionEvent ae) {
 		if(ae.getSource()==b1) {
 			this.dispose();
-			new Pay(url).setVisible(true);
-		}else if(ae.getSource()==b2)
-			this.dispose();
+			dashboard.setVisible(true);
+			new Pay(url,username,dashboard).setVisible(true);
+			
+		}else if(ae.getSource()==b2) {
+		this.dispose();
+		dashboard.setEnabled(true);
+		dashboard.setVisible(true);
+		}
 	}
 
 	public static void main(String[] args) {
-		new Payment().setVisible(true);
+		new Payment("",new JFrame()).setVisible(true);
 	}	
 }
