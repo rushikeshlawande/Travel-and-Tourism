@@ -126,7 +126,7 @@ public class ViewBookedHotel extends JFrame implements ActionListener{
 
 		try {
 			Conn c=new Conn();
-			ResultSet rs =c.s.executeQuery("select * from bookHotel where username = '"+username+"'");
+			ResultSet rs =c.s.executeQuery("select * from bookhotel where username = '"+username+"'");
 			if(rs.next() == false) {
 				 JOptionPane.showMessageDialog(null,"No Hotel Booked ","Please Book a Package",JOptionPane.ERROR_MESSAGE);
 				 dashboard.setVisible(true);	 
