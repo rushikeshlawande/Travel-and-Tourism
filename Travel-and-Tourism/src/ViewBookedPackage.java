@@ -108,7 +108,7 @@ public class ViewBookedPackage extends JFrame implements ActionListener{
 		
 		try {
 			Conn c=new Conn();
-			ResultSet rs =c.s.executeQuery("select * from bookPackage where username ='"+username+"'");
+			ResultSet rs =c.s.executeQuery("select * from bookpackage where username ='"+username+"'");
 			if(rs.next() == false) {
 				 JOptionPane.showMessageDialog(null,"No Package Booked ","Please Book a Package",JOptionPane.ERROR_MESSAGE);
 				 dashboard.setVisible(true); 
