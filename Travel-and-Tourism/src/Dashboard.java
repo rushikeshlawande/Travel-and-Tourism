@@ -253,8 +253,6 @@ public class Dashboard extends JFrame implements ActionListener{
     	}else if (ae.getSource() == b16) {
     		//To logout from system
     		System.exit(0);
-    		//ok
-    		
     	}
     }
 	
