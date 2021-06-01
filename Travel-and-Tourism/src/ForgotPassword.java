@@ -10,6 +10,7 @@ public class ForgotPassword extends JFrame implements ActionListener{
    ForgotPassword()
    {
      setBounds(300,250,870,380);
+     this.setTitle(" Retrieve Password");
      getContentPane().setBackground(Color.WHITE);
      setLayout(null);
 	 setResizable(false);
