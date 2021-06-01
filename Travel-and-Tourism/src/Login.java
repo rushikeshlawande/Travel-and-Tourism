@@ -12,7 +12,7 @@ public class Login extends JFrame implements ActionListener{
     JPasswordField t2;
     String username=null, password=null;
 	Login(String username, String password){
-      this.setTitle("Login Page");
+      this.setTitle(" Login Page");
       this.username=username;
       this.password=password;
       setLayout(null); //BorderLayout, FlowLayout, GridLayout,Grid
