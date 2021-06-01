@@ -251,6 +251,7 @@ public class Dashboard extends JFrame implements ActionListener{
     		this.disable();
     		new Destinations(this).setVisible(true);
     	}else if (ae.getSource() == b16) {
+    		//To logout from system
     		System.exit(0);
     	}
     }
