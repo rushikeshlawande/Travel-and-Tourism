@@ -8,9 +8,14 @@ public class Conn {
 	Connection c;
 	Statement s;
 	
+	private final String url="jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6416326";
+	public final String user = "sql6416326";
+	public final String password= "ZrxfffNjaf";
+	/*
 	private final String url="jdbc:mysql:///project";
 	public final String user = "root";
 	public final String password= "Rushi@712";
+	*/
 	public Conn(){
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
