@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Dashboard extends JFrame implements ActionListener{
 
-	JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15;
+	JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15,b16;
 	static String username;
 	Dashboard(String username){
 	    this.username = username;
