@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Dashboard extends JFrame implements ActionListener{
 
-	JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16;
+	JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15,b16;
 	static String username;
 	Dashboard(String username){
 	    this.username = username;
@@ -172,7 +172,7 @@ public class Dashboard extends JFrame implements ActionListener{
 		b15.setBounds(0, 560, 300, 40);
 		b15.addActionListener(this);
 		p2.add(b15);
-	    
+	       
 		b16 = new JButton("Log Out");
 		b16.setBackground(new Color(0, 0, 102));
 		b16.setFont(new Font("Tahoma", Font.PLAIN, 20));

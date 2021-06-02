@@ -224,7 +224,7 @@ public class BookHotel extends JFrame implements ActionListener{
 			if(total >0 &(persons>0 & days>0)) {
 				try {
 					Conn c= new Conn();
-					String query = "insert into bookhotel values('"+ username +"','"+c1.getSelectedItem()+"', '"+t1.getText()+"', '"+t2.getText()+"', '"+c2.getSelectedItem()+"', '"+c3.getSelectedItem()+"', '"+l22.getText()+"', '"+l23.getText()+"', '"+l24.getText()+"', '"+l25.getText()+"')" ;
+					String query = "insert into bookHotel values('"+ username +"','"+c1.getSelectedItem()+"', '"+t1.getText()+"', '"+t2.getText()+"', '"+c2.getSelectedItem()+"', '"+c3.getSelectedItem()+"', '"+l22.getText()+"', '"+l23.getText()+"', '"+l24.getText()+"', '"+l25.getText()+"')" ;
 					c.s.executeUpdate(query);
 					JOptionPane.showMessageDialog(null, "Hotel Booked Successfully");				
 			        this.dispose();

@@ -27,6 +27,7 @@ public class Conn {
 		}
 		catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Failed To Connect Database");
+
 		}
 		
 	}
