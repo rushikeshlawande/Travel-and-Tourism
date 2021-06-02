@@ -22,9 +22,11 @@ public class Conn {
 			c = DriverManager.getConnection(url,user,password);
 			s = c.createStatement();
 		}
+		catch(com.mysql.cj.jdbc.exceptions.CommunicationsException e){
+			JOptionPane.showMessageDialog(null,"        You are offline! ","No Internet Connectivity",JOptionPane.ERROR_MESSAGE);
+		}
 		catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Failed To Connect Database");
-
 		}
 		
 	}

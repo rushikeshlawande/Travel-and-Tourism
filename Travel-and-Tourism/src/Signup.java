@@ -11,6 +11,7 @@ public class Signup extends JFrame implements ActionListener, ItemListener{
 	
     Signup(){
       setBounds(300,250,900,400);
+      this.setTitle(" Register User");
       getContentPane().setBackground(Color.WHITE);
       setLayout(null);
 	  this.setResizable(false);
