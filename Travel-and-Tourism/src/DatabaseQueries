@@ -34,10 +34,12 @@ Server: remotemysql.com
 Port: 3306
 ******
 
-
-"Grand-Hyatt-Martinez Hotel", "Marina Bay Hotel", "ST-Barth Hotel", "Disneyland Hotel", "Beyond Resort",
+**Hotel names**
+            "Grand-Hyatt-Martinez Hotel", "Marina Bay Hotel", "ST-Barth Hotel", "Disneyland Hotel", "Beyond Resort",
     		"The Oberoi Udaivilas Hotel", "Burj Al Arab Hotel", "Mardan Palace Hotel","The Palm Atlantis Hotel",
     		"Italy Tyrrhenian Hotel"
+***
+Queries for database:
 
 create table account(username varchar(30),name varchar(30),password varchar(30), security varchar(30),answer varchar(30),mobileNo varchar(13),emailID varchar(30), primary key(username));
 
