@@ -1,0 +1,44 @@
+Commands to create a tables
+
+
+FREEDB CONTROL PANEL
+
+DATABASE Credentials :
+
+Remote Host : freedb.tech
+
+Port : 3306
+
+Database Name : freedbtech_rushitravel
+
+Username: freedbtech_rushitravel
+Password :Pass@123
+
+mysql -u freedbtech_rushitravel -pPass@123 -h freedb.tech -P3306 freedbtech_rushitravel
+
+
+
+
+"Grand-Hyatt-Martinez Hotel", "Marina Bay Hotel", "ST-Barth Hotel", "Disneyland Hotel", "Beyond Resort",
+    		"The Oberoi Udaivilas Hotel", "Burj Al Arab Hotel", "Mardan Palace Hotel","The Palm Atlantis Hotel",
+    		"Italy Tyrrhenian Hotel"
+
+create table account(username varchar(30),name varchar(30),password varchar(30), security varchar(30),answer varchar(30),mobileNo varchar(13),emailID varchar(30), primary key(username));
+
+create table customer(username varchar(30),id varchar(20), idnumber varchar(20),name varchar(30),gender varchar(10),country varchar(20),address varchar(40),mobileNo varchar(13),emailID varchar(30), primary key(username));
+
+create table bookpackage(username varchar(30),package varchar(30),persons varchar(5),id varchar(20), idnumber varchar(20), mobileNo varchar(12), cost varchar(20));
+
+create table bookhotel(username varchar(30),hotel varchar(30),persons varchar(5), days varchar(4), ac varchar(10), food varchar(10),id varchar(20), idnumber varchar(20), mobileNo varchar(12), cost varchar(20));
+
+create table hotel(name varchar(40), cost_per_day varchar(20), food_charges varchar(20), ac_charges varchar(20));
+insert into hotel values('Grand-Hyatt-Martinez Hotel','2000','2500','3000');
+insert into hotel values('Marina Bay Hotel','2500','2200','4000');
+insert into hotel values('ST-Barth Hotel','3000','2700','3500');
+insert into hotel values('Disneyland Hotel','2500','2400','3200');
+insert into hotel values('Beyond Resort','3500','2500','3600');
+insert into hotel values('The Oberoi Udaivilas Hotel','4500','2900','4200');
+insert into hotel values('Burj Al Arab Hotel','5000','3000','3500');
+insert into hotel values('Mardan Palace Hotel','3500','2400','4300');
+insert into hotel values('The Palm Atlantis Hotel','5000','3000','3600');
+insert into hotel values('Italy Tyrrhenian Hotel','7500','3500','4500');
