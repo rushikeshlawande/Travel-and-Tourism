@@ -4,7 +4,10 @@ Commands to create a tables
 FREEDB CONTROL PANEL
 
 DATABASE Credentials :
-
+C:\Program Files\MySQL\MySQL Server 8.0\bin
+*****
+https://freedb.tech
+site user and passsword -10rslawande@gmail.com Pass@123
 Remote Host : freedb.tech
 
 Port : 3306
@@ -16,7 +19,20 @@ Password :Pass@123
 
 mysql -u freedbtech_rushitravel -pPass@123 -h freedb.tech -P3306 freedbtech_rushitravel
 
+****
+https://remotemysql.com/databases.php
+site user and passsword -10rslawande@gmail.com Pass@123
 
+Username: 8FKklAJJZz
+
+Database name: 8FKklAJJZz
+
+Password: D81fAfcw8J
+
+Server: remotemysql.com
+
+Port: 3306
+******
 
 
 "Grand-Hyatt-Martinez Hotel", "Marina Bay Hotel", "ST-Barth Hotel", "Disneyland Hotel", "Beyond Resort",

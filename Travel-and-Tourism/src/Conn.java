@@ -7,15 +7,24 @@ import javax.swing.JOptionPane;
 public class Conn {
 	Connection c;
 	Statement s;
-	
+	/*
+	 //freedb.tech:
 	private final String url="jdbc:mysql://freedb.tech:3306/freedbtech_rushitravel";
 	public final String user = "freedbtech_rushitravel";
 	public final String password= "Pass@123";
-    /*
+    */
+	
+	//remotemysql.com
+	private final String url="jdbc:mysql://remotemysql.com:3306/8FKklAJJZz";
+	public final String user = "8FKklAJJZz";
+	public final String password= "D81fAfcw8J";
+	
+	/*
 	private final String url="jdbc:mysql:///project";
 	public final String user = "root";
 	public final String password= "Rushi@712";
 	*/
+	
 
 	public Conn(){
 		try {
